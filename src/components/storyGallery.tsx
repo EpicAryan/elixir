@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { easeInOut, easeOut, motion, useInView } from "framer-motion";
+import { easeInOut, easeOut, motion, useInView } from "motion/react";
 import Image from "next/image";
 
 const topRowImages = [

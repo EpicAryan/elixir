@@ -1,7 +1,8 @@
 import { HeroSection } from "@/components";
 import { ImpactSection } from "@/components";
-import { StoryGallerySection } from "@/components/storyGallery";
-import { WhyChooseUs } from "@/components/whyChooseUs";
+import { StoryGallerySection } from "@/components";
+import { WhyChooseUs } from "@/components";
+import { DreamSpaceCta } from "@/components";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <ImpactSection/>
       <StoryGallerySection/>
       <WhyChooseUs/>
+      <DreamSpaceCta/>
     </main>
   );
 }
