@@ -1,14 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @font-face {
-  font-family: 'Autograf';
-  src: url('/fonts/Autograf_PersonalUseOnly.ttf') format('truetype');
+  font-family: 'GT Walsheim Pro';
+  src: url('/fonts/GTWalsheimPro-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  /* font-display: swap; */
 }
+
+.font-walsheim {
+  font-family: 'GT Walsheim Pro';
+}
+
+@custom-variant dark (&:is(.dark *));
+
 
 
 @theme inline {
