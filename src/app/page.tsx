@@ -1,8 +1,13 @@
 import { HeroSection } from "@/components";
+import { ImpactSection } from "@/components";
+
 
 
 export default function Home() {
   return (
-    <HeroSection/>
+    <main>
+      <HeroSection/>
+      <ImpactSection/>
+    </main>
   );
 }
