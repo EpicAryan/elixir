@@ -88,7 +88,7 @@ export function StoryGallerySection() {
   };
 
   const renderImageRow = (images: string[], animationClass: string) => (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden z-20">
       <div className={`flex w-max ${animationClass}`}>
         {[...images, ...images].map((src, index) => (
           <div key={index} className="flex-shrink-0 w-[80vw] sm:w-[80vw] md:w-[50vw] lg:w-[40vw] px-1">
@@ -98,7 +98,7 @@ export function StoryGallerySection() {
                 alt={`Interior design gallery image ${index + 1}`}
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 20vw"
+                sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 20vw "
               />
             </div>
           </div>
@@ -136,7 +136,7 @@ export function StoryGallerySection() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 ">
         {renderImageRow(topRowImages, "animate-scroll-left")}
         {renderImageRow(bottomRowImages, "animate-scroll-right")}
       </div>

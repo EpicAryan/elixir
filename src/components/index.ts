@@ -6,6 +6,8 @@ import { WhyChooseUs } from "./whyChooseUs";
 import { DreamSpaceCta } from "./dreamSpaceCta";
 import { BuiltToLast } from "./buildToLast";
 import { HappyHomes } from "./happyHome";
+import { StayInTheKnow } from "./StayInTheKnow";
+import { Footer } from "./Footer";
 
 export {
     Navbar,
@@ -15,5 +17,7 @@ export {
     WhyChooseUs,
     DreamSpaceCta,
     BuiltToLast,
-    HappyHomes
+    HappyHomes,
+    StayInTheKnow,
+    Footer
 }

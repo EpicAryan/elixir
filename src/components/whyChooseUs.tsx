@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { useInView, motion } from 'motion/react';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 const GradientText = ({ children }: { children: React.ReactNode }) => (
   <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-4xl lg:text-[55px] font-semibold text-transparent">
@@ -10,6 +11,9 @@ const GradientText = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function WhyChooseUs() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,35 +23,69 @@ export function WhyChooseUs() {
   };
 
   const hoverEffect = {
-    whileHover: { scale: 1.03, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.05)" },
+    whileHover: { scale: 1.03, boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)' },
   };
 
   const itemVariants = {
-    fromLeft: { hidden: { x: -50, opacity: 0 }, visible: { x: 0, opacity: 1, transition: { duration: 0.5 } } },
-    fromRight: { hidden: { x: 50, opacity: 0 }, visible: { x: 0, opacity: 1, transition: { duration: 0.5 } } },
-    fromBottom: { hidden: { y: 50, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.5 } } },
-    fadeIn: { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.7 } } },
+    fromLeft: {
+      hidden: { x: -50, opacity: 0 },
+      visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+    },
+    fromRight: {
+      hidden: { x: 50, opacity: 0 },
+      visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+    },
+    fromBottom: {
+      hidden: { y: 50, opacity: 0 },
+      visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    },
+    fadeIn: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: { duration: 0.7 } },
+    },
   };
 
   return (
-    <section className="py-8 mb-8 bg-white min-h-full">
-      <div className="container mx-auto px-6 md:px-4 lg:px-12 xl:px-32">
+    <section className="relative py-8 mb-8 bg-white min-h-full overflow-hidden">
+
+      <div className="container mx-auto px-6 md:px-4 lg:px-12 xl:px-32 relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
+          ref={ref}
         >
-          <p className="text-xs font-semibold text-[#AF7B5B] tracking-[0.11rem] font-gtpro">
+          <p className="text-xs font-semibold text-[#AF7B5B] tracking-[0.11rem] font-gtpro z-20">
             SERIOUS ABOUT DESIGN, FUN ABOUT EVERYTHING ELSE.
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-wide text-gray-800 mt-2 inline-flex items-center gap-3 font-gtpro">
+
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-wide text-gray-800 mt-2 inline-flex items-center gap-3 font-gtpro justify-center z-20">
             Why choose
-            <span className="inline-flex items-center border-b-2 border-orange-400">
+            <span className="relative inline-flex items-center">
               <Image src="/logo.svg" alt="logo" width={20} height={20} className="w-11 h-auto" />
-              <span className="font-bold text-orange-500 mx-1">Elixir</span>
-              ?
+              <span className="font-bold text-orange-500 mx-1">Elixir</span>?
+
+              {/* Animated SVG underline */}
+              <motion.svg
+                width="157"
+                height="6"
+                viewBox="0 0 157 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute -bottom-2 left-0"
+              >
+                <motion.path
+                  d="M1 4.98631C1 4.98631 34.91 0.947199 56.6647 1.00052C77.6993 1.05208 89.4501 5.26996 110.484 4.98631C128.279 4.74635 156 1.00052 156 1.00052"
+                  stroke="#F2672D"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                  transition={{ duration: 1, ease: 'easeInOut' }}
+                />
+              </motion.svg>
             </span>
           </h2>
         </motion.div>

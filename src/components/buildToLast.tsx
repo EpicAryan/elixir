@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
 import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'motion/react';
+import { motion, useInView, useAnimation } from 'motion/react'; 
 import Image from 'next/image';
 import { WavyUnderline } from './icons/WavyUnderline';
 
 export function BuiltToLast() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5 }); 
+  const isInView = useInView(ref, { amount: 0.5 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -40,8 +40,17 @@ export function BuiltToLast() {
       ref={ref}
       className="relative py-24 md:py-32 bg-white overflow-hidden"
     >
+      {/* Decorative BG Top-Left Image */}
+      <Image
+        src="/bg-design.png"
+        alt="Decorative Design"
+        width={300}
+        height={300}
+        className="absolute top-0 left-0 z-0 pointer-events-none  -translate-y-8"
+      />
+
       <div className="container mx-auto px-4 relative">
-        {/* Background Image */}
+        {/* Center Image */}
         <motion.div
           className="relative mx-auto w-full max-w-sm z-0"
           variants={containerVariants}
