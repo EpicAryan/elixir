@@ -3,6 +3,7 @@ import { ImpactSection } from "@/components";
 import { StoryGallerySection } from "@/components";
 import { WhyChooseUs } from "@/components";
 import { DreamSpaceCta } from "@/components";
+import { BuiltToLast } from "@/components/buildToLast";
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <StoryGallerySection/>
       <WhyChooseUs/>
       <DreamSpaceCta/>
+      <BuiltToLast/>
     </main>
   );
 }

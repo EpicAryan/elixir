@@ -1,10 +1,23 @@
 'use client';
 
-import { easeOut, motion } from 'motion/react';
+import { useRef, useEffect } from 'react';
+import { easeOut, motion, useInView, useAnimation } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 export function DreamSpaceCta() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.5 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [isInView, controls]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,14 +52,16 @@ export function DreamSpaceCta() {
   };
 
   return (
-    <section className="bg-[#F2672D] overflow-hidden relative">
-      <div className="container mx-auto px-16 py-20 md:py-24">
+    <section
+      ref={ref}
+      className="bg-[#F2672D] overflow-hidden relative"
+    >
+      <div className="container mx-auto px-6 md:px-16 py-20 md:py-24">
         <motion.div
           className="relative z-10 flex flex-col md:flex-row justify-between items-center"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          animate={controls}
         >
           {/* Left Side: Text and Buttons */}
           <div className="text-center md:text-left">
@@ -58,37 +73,39 @@ export function DreamSpaceCta() {
               <br />
               get a <span className="font-bold text-white">free quote?</span>
             </motion.h2>
+
             <motion.div
               className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
               variants={itemVariants}
             >
-             <Button
+              <Button
                 variant="outline"
                 className="bg-white/15 text-white border-white/80 hover:bg-white/20 hover:shadow-xl hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro text-lg font-semibold tracking-wide cursor-pointer"
-                >
+              >
                 Get your free quotation
-            </Button>
+              </Button>
 
-            <Button
+              <Button
                 variant="outline"
                 className="bg-transparent text-white border-white/80 hover:bg-white/10 hover:shadow-lg hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro text-lg font-semibold tracking-wide cursor-pointer"
-                >
+              >
                 Talk to the designer
-            </Button>
-
+              </Button>
             </motion.div>
           </div>
 
-          {/* Right Side: Decorative SVG Pattern */}
+          {/* Decorative Pattern */}
           <motion.div
             className="absolute top-1/2 -translate-y-1/2 -right-40 md:-right-20 lg:-right-10 w-[400px] h-[220px] -z-10"
             variants={patternVariants}
+            initial="hidden"
+            animate={controls}
           >
-            <Image 
-                src='group.svg' 
-                alt='group' 
-                fill
-                className="object-contain"
+            <Image
+              src="group.svg"
+              alt="group"
+              fill
+              className="object-contain"
             />
           </motion.div>
         </motion.div>
