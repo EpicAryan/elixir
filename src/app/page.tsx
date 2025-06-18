@@ -3,7 +3,8 @@ import { ImpactSection } from "@/components";
 import { StoryGallerySection } from "@/components";
 import { WhyChooseUs } from "@/components";
 import { DreamSpaceCta } from "@/components";
-import { BuiltToLast } from "@/components/buildToLast";
+import { BuiltToLast } from "@/components";
+import { HappyHomes } from "@/components";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WhyChooseUs/>
       <DreamSpaceCta/>
       <BuiltToLast/>
+      <HappyHomes/>
     </main>
   );
 }

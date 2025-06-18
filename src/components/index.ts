@@ -4,6 +4,8 @@ import { ImpactSection } from "./impact";
 import { StoryGallerySection } from "./storyGallery";
 import { WhyChooseUs } from "./whyChooseUs";
 import { DreamSpaceCta } from "./dreamSpaceCta";
+import { BuiltToLast } from "./buildToLast";
+import { HappyHomes } from "./happyHome";
 
 export {
     Navbar,
@@ -11,5 +13,7 @@ export {
     ImpactSection,
     StoryGallerySection,
     WhyChooseUs,
-    DreamSpaceCta
+    DreamSpaceCta,
+    BuiltToLast,
+    HappyHomes
 }
