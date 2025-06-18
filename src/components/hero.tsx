@@ -68,9 +68,9 @@ const Hero = () => {
 
   return (
     <section className="relative pt-8 overflow-hidden max-h-screen">
-      <div className="px-4 sm:px-8 md:px-16 lg:px-28 pt-10 md:pt-16 pb-20 md:pb-24">
+      <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 pt-10 md:pt-16 pb-20 md:pb-24">
         <motion.div 
-          className="relative aspect-[7/12] sm:aspect-[7/9] md:aspect-[16/12] lg:aspect-[16/7] w-full rounded-4xl sm:rounded-3xl overflow-hidden "
+          className="relative aspect-[7/12] sm:aspect-[7/9] md:aspect-[16/12] lg:aspect-[16/11] xl:aspect-[16/7] w-full rounded-4xl sm:rounded-3xl overflow-hidden "
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -93,9 +93,9 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
             >
               <div className="bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-5 rounded-2xl drop-shadow-2xl max-w-sm">
-                  <p className="text-[11px] sm:text-xs font-semibold tracking-wider text-slate-600">CHENNAIS&apos; FAVORITE INTERIORS</p>
+                  <p className="text-[11px] sm:text-xs font-semibold tracking-wider text-slate-600 font-gtpro">CHENNAIS&apos; FAVORITE INTERIORS</p>
                 <div className="flex items-center justify-center gap-2 text-yellow-500">
-                  <h2 className="text-base sm:text-lg ont-normal text-slate-900 ">
+                  <h2 className="text-base sm:text-lg ont-normal text-slate-900 font-gtpro">
                     4.3k+ Ratings
                   </h2>
                   <Star fill="currentColor" className="w-5 h-5" />
@@ -105,7 +105,7 @@ const Hero = () => {
 
           <div className="md:hidden absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl text-center z-10">
             <div>
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 font-geist font-medium">
                 Move in with a smile
                 <Image
                   src="/smile.svg"
@@ -146,29 +146,29 @@ const Hero = () => {
           <div className="bg-white/90 backdrop-blur-sm p-4 rounded-2xl drop-shadow-2xl max-w-sm">
             <div className="flex items-center gap-2 text-yellow-500">
               <Star fill="currentColor" className="w-5 h-5" />
-              <p className="text-[11px] lg:text-xs font-semibold tracking-wider text-slate-600">CHENNAIS&apos; FAVORITE INTERIORS</p>
+              <p className="text-[11px] lg:text-xs font-semibold tracking-wider text-slate-600 font-gtpro">CHENNAIS&apos; FAVORITE INTERIORS</p>
             </div>
-            <h2 className="text-lg lg:text-2xl font-normal text-slate-900 lg:mt-2">
+            <h2 className="text-lg lg:text-2xl font-normal text-slate-900 lg:mt-2 font-gtpro">
               4.3k+ Ratings
             </h2>
           </div>
         </motion.div>
 
         <motion.div
-          className="hidden absolute inset-0 md:flex justify-end items-center -translate-x-10 lg:-translate-x-18 -translate-y-10 "
+          className="hidden absolute inset-0 md:flex justify-end items-center -translate-x-10 xl:-translate-x-18 -translate-y-10 "
           variants={itemVariants1}
           initial="hidden"
           animate="visible"
         >
-          <div className="bg-white p-6 rounded-2xl drop-shadow-xl max-w-[360px] lg:max-w-[420px] border-[1px]">
+          <div className="bg-white p-6 rounded-2xl drop-shadow-xl max-w-[360px] xl:max-w-[420px] border-[1px]">
               <div className="flex items-center gap-3">
                   <Image src="/Avatar.png" alt="Aishwarya R." width={48} height={48} className="rounded-full w-10 h-10 lg:w-12 lg:h-12" />
                   <div>
-                      <p className="font-bold text-sm lg:text-base text-[#010101]">Aishwarya R.</p>
-                      <p className="text-xs lg:text-sm text-[#868686]">3BHK in Anna Nagar, Chennai.</p>
+                      <p className="font-bold text-sm lg:text-base text-[#010101] font-gtpro">Aishwarya R.</p>
+                      <p className="text-xs lg:text-sm text-[#868686] font-gtpro">3BHK in Anna Nagar, Chennai.</p>
                   </div>
               </div>
-              <p className="mt-4 text-sm/[26px] lg:text-lg/[26px] text-black ">
+              <p className="mt-4 text-sm/[26px] lg:text-lg/[26px] text-black  font-gtpro">
                   “They really listened, understood my ideas, and turned them into a space that feels like mine.”
               </p>
               <p className="w-full flex justify-end">
@@ -184,16 +184,16 @@ const Hero = () => {
         </motion.div>
 
         <motion.div 
-            className="hidden md:block absolute translate-x-6 lg:translate-x-20 translate-y-4 -mt-20 z-10 bg-white p-4 lg:p-6 rounded-2xl drop-shadow-2xl max-w-[280px] lg:max-w-sm mx-auto border-[1px]"
+            className="hidden md:block absolute translate-x-6 xl:translate-x-20 translate-y-4 -mt-20 z-10 bg-white p-4 xl:p-6 rounded-2xl drop-shadow-2xl max-w-[280px] lg:max-w-xs xl:max-w-sm mx-auto border-[1px]"
             variants={itemVariants}
             initial="hidden"
             animate="visible"
             whileHover={{ scale: 1.02, boxShadow: '0px 8px 30px rgba(0, 0, 0, 0.15)' }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
-            <h3 className="text-base lg:text-xl font-normal text-black">Make yourself at Home</h3>
-            <p className="mt-2 text-sm lg:text-base text-slate-600">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
-            <Button className="relative mt-4 w-full bg-[#F86642] hover:bg-orange-600 text-base lg:text-lg text-white font-medium py-6 shadow-[2px_10px_30px_-6px_#F86642]/60 rounded-xl cursor-pointer active:scale-102">
+            <h3 className="text-base lg:text-xl font-normal text-black font-gtpro">Make yourself at Home</h3>
+            <p className="mt-2 text-sm xl:text-base text-slate-600 font-gtpro">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
+            <Button className="relative mt-4 w-full bg-[#F86642] hover:bg-orange-600 text-base xl:text-lg text-white font-medium py-6 shadow-[2px_10px_30px_-6px_#F86642]/60 rounded-xl cursor-pointer active:scale-102 font-gtpro">
                 BOOK A FREE CONSULTATION
             </Button>
         </motion.div>
@@ -201,13 +201,13 @@ const Hero = () => {
         
 
         <motion.div 
-          className="mt-4 md:mt-6 md:ml-[38%] lg:ml-[30%] relative overflow-hidden "
+          className="mt-4 md:mt-6 md:ml-[38%] lg:ml-[35%] xl:ml-[30%] relative overflow-hidden "
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-            <h4 className="text-base lg:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] mb-4 md:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
+            <h4 className="text-base xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] mb-4 md:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
             <div className="relative w-full overflow-hidden">
     
                 <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
@@ -230,7 +230,7 @@ const Hero = () => {
                       alt={alt}
                       width={width || 80}
                       height={height || 40}
-                      className="opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition-all h-5 lg:h-8 w-auto object-contain"
+                      className="opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition-all h-5 xl:h-8 w-auto object-contain"
                     />
                 ))}
                 </motion.div>

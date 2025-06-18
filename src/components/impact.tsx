@@ -47,8 +47,8 @@ const AnimatedNumber = ({ value, isInView }: { value: number; isInView: boolean;
 
   return (
     <div
-       className="flex font-bold leading-none text-transparent bg-gradient-to-r from-[#F2672D] to-[#F99A72] bg-clip-text"
-        style={{ fontSize: "clamp(6rem, 25vw, 14rem)" }}
+       className="flex font-bold leading-none text-transparent bg-gradient-to-r from-[#F2672D] to-[#F99A72] bg-clip-text text-[8rem] md:text-[12rem] xl:text-[14rem]"
+        // style={{ fontSize: "clamp(6rem, 25vw, 14rem)" }}
     >
       {digits.map((digit, index) => (
         <AnimatedDigit key={index} digit={digit} isInView={isInView} index={index} 
@@ -84,26 +84,26 @@ export function ImpactSection() {
 
   return (
     <section ref={sectionRef} className="bg-white py-20 sm:py-28">
-      <div className="container mx-auto px-4 lg:pl-24">
+      <div className="container mx-auto px-4 lg:pl-16 xl:pl-24">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 lg:gap-8 items-center"
         >
           {/* Left Column: Text Content */}
-          <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-            <motion.p variants={itemVariants} className="text-sm font-semibold tracking-[0.2em] text-[#AF7B5B] uppercase">
+          <div className="flex flex-col text-center lg:text-left items-center lg:items-start font-gtpro">
+            <motion.p variants={itemVariants} className="text-xs sm:text-sm lg:text-xs xl:text-sm font-semibold tracking-[0.2em] text-[#AF7B5B] uppercase">
               Meet Chennai&apos;s Favorite Interior Design
             </motion.p>
 
-            <motion.h2 variants={itemVariants} className="mt-4 text-5xl md:text-5xl/snug font-medium tracking-wide text-gray-900">
+            <motion.h2 variants={itemVariants} className="mt-4 text-4xl sm:text-5xl md:text-5xl/snug lg:text-[42px]/snug font-medium tracking-wide text-gray-900">
               Influential
               <br />
               <span className="font-bold">and Impactful.</span>
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="mt-6 max-w-lg text-base md:text-lg text-black/60 leading-relaxed tracking-wider">
+            <motion.p variants={itemVariants} className="mt-6 max-w-sm sm:max-w-lg text-sm sm:text-base md:text-lg lg:text-base xl:text-lg text-black/60 leading-relaxed tracking-wider">
               From full-home interiors to smart modular solutions, we design spaces that reflect your story and support your lifestyle — thoughtfully, beautifully, and end to end.
             </motion.p>
 
@@ -115,7 +115,7 @@ export function ImpactSection() {
                   alt={logo.alt}
                   width={90}
                   height={90}
-                  className="object-contain h-14 w-auto"
+                  className="object-contain h-10 sm:h-14 w-auto"
                 />
               ))}
             </motion.div>
@@ -130,7 +130,7 @@ export function ImpactSection() {
               className="object-contain z-0"
             />
             <div className="relative z-10 flex flex-col items-center">
-              <p className="text-sm font-normal tracking-[0.2em] text-[#AEAEAE] uppercase">
+              <p className="text-sm lg:text-xs xl:text-sm font-normal tracking-[0.2em] text-[#AEAEAE] uppercase font-gtpro">
                 Projects Completed This Year.
               </p>
               <AnimatedNumber value={361} isInView={isInView} />
