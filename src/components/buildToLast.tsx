@@ -46,7 +46,7 @@ export function BuiltToLast() {
         alt="Decorative Design"
         width={300}
         height={300}
-        className="absolute top-0 left-0 z-0 pointer-events-none  -translate-y-8"
+        className="absolute top-0 left-0 z-0 pointer-events-none  -translate-y-8 w-40 h-auto sm:w-56 md:w-60 lg:w-76"
       />
 
       <div className="container mx-auto px-4 relative">
@@ -75,7 +75,7 @@ export function BuiltToLast() {
             variants={containerVariants}
           >
             <motion.p
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800"
               variants={textItemVariants}
             >
               Built to last.
@@ -86,18 +86,18 @@ export function BuiltToLast() {
               variants={textItemVariants}
             >
               <div className="relative inline-block">
-                <span className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text text-transparent">
+                <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text text-transparent">
                   10 years
                 </span>
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2">
                   <WavyUnderline
                     isInView={isInView}
-                    className="w-[170px] sm:w-[190px] md:w-[230px] h-auto"
+                    className="w-[120px] sm:w-[190px] md:w-[230px] h-auto"
                   />
                 </div>
               </div>
 
-              <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800">
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800">
                 warranty
               </span>
             </motion.div>

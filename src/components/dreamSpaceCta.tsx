@@ -66,7 +66,7 @@ export function DreamSpaceCta() {
           {/* Left Side: Text and Buttons */}
           <div className="text-center md:text-left">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-[#F8BA9E] font-gtpro z-20"
+              className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#F8BA9E] font-gtpro z-20"
               variants={itemVariants}
             >
               Start your dream space,
@@ -80,14 +80,14 @@ export function DreamSpaceCta() {
             >
               <Button
                 variant="outline"
-                className="bg-white/15 text-white border-white/80 hover:bg-white/20 hover:shadow-xl hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro text-lg font-semibold tracking-wide cursor-pointer"
+                className="bg-white/15 text-white border-white/80 hover:bg-white/20 hover:shadow-xl hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro sm:text-lg font-semibold tracking-wide cursor-pointer"
               >
                 Get your free quotation
               </Button>
 
               <Button
                 variant="outline"
-                className="bg-transparent text-white border-white/80 hover:bg-white/10 hover:shadow-lg hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro text-lg font-semibold tracking-wide cursor-pointer"
+                className="bg-transparent text-white border-white/80 hover:bg-white/10 hover:shadow-lg hover:scale-[1.03] hover:text-white rounded-lg px-6 py-5 transition-all duration-300 ease-in-out font-gtpro sm:text-lg font-semibold tracking-wide cursor-pointer"
               >
                 Talk to the designer
               </Button>

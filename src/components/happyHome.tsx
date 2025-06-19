@@ -37,7 +37,7 @@ const GalleryImage = ({
 
 export function HappyHomes() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.08 });
 
   const images = [
     '/happy/image-1.jpg',
@@ -119,10 +119,10 @@ export function HappyHomes() {
             variants={animationVariants.fadeIn}
             className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col justify-center items-center text-center bg-gray-50 rounded-xl p-6 font-gtpro"
           >
-            <h3 className="text-5xl font-bold">
+            <h3 className="text-3xl md:text-5xl font-bold">
               <GradientText>10,000+</GradientText>
             </h3>
-            <h2 className="text-2xl md:text-5xl font-semibold text-slate-800 mt-2">
+            <h2 className="text-3xl md:text-5xl font-semibold text-slate-800 mt-2">
               Happy Homes, <br /> One Simple Promise.
             </h2>
           </motion.div>

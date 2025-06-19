@@ -82,7 +82,7 @@ export function Footer() {
       <div className="container mx-auto px-4 overflow-x-hidden">
         <motion.div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 py-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 sm:gap-y-16 py-16"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -104,21 +104,21 @@ export function Footer() {
                   alt="Elixir stamp"
                   width={120}
                   height={80}
-                  className="absolute bottom-0 right-0 transition-transform duration-300 hover:rotate-[5deg] hover:scale-105 z-40"
+                  className="absolute -bottom-24 -right-8 md:-bottom-14 md:-right-5 w-48  h-auto transition-transform duration-300 hover:rotate-[5deg] hover:scale-105 z-30"
                 />
                 <Image
                   src="/footer/image-2.png"
                   alt="Stamp 2"
                   width={150}
                   height={100}
-                  className="absolute top-0 right-0 w-36 h-auto transition-transform duration-300 hover:rotate-[5deg] hover:scale-105 z-30"
+                  className="absolute top-0 -right-10 md:right-0 w-40 sm:w-44 md:w-36 h-auto transition-transform duration-300 hover:-rotate-[2deg] hover:scale-105 z-20"
                 />
                 <Image
                   src="/footer/image-3.png"
                   alt="Stamp 3"
                   width={150}
                   height={100}
-                  className="absolute bottom-0 left-0 w-40 h-auto transition-transform duration-300 hover:-rotate-[8deg] hover:scale-105"
+                  className="absolute -bottom-12 md:-bottom-2 -left-6 sm:-left-10 md:left-0 w-52 md:w-40 h-auto transition-transform duration-300 hover:-rotate-[8deg] hover:scale-105"
                 />
               </div>
             </div>
@@ -161,7 +161,7 @@ export function Footer() {
             <p className="font-semibold text-white mb-4 font-gtpro text-lg">Get a free quote?</p>
             <div className="flex flex-col gap-4">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button className="bg-[#F86642] text-white hover:bg-orange-600 w-full font-gtpro cursor-pointer">
+                <Button className="bg-[#F86642] text-white hover:bg-orange-600 w-full font-gtpro cursor-pointer lg:text-xs xl:text-base">
                   BOOK A FREE CONSULTATION
                 </Button>
               </motion.div>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 const GradientText = ({ children }: { children: React.ReactNode }) => (
-  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-4xl lg:text-[55px] font-semibold text-transparent">
+  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-3xl sm:text-4xl lg:text-[55px] font-semibold text-transparent">
     {children}
   </span>
 );
@@ -61,7 +61,7 @@ export function WhyChooseUs() {
             SERIOUS ABOUT DESIGN, FUN ABOUT EVERYTHING ELSE.
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-wide text-gray-800 mt-2 inline-flex items-center gap-3 font-gtpro justify-center z-20">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-wide text-gray-800 mt-2 inline-flex items-center gap-3 font-gtpro justify-center z-20">
             Why choose
             <span className="relative inline-flex items-center">
               <Image src="/logo.svg" alt="logo" width={20} height={20} className="w-11 h-auto" />
@@ -74,7 +74,7 @@ export function WhyChooseUs() {
                 viewBox="0 0 157 6"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -bottom-2 left-0"
+                className="absolute -bottom-2 left-0 w-32 sm:w-36 md:w-48 h-auto "
               >
                 <motion.path
                   d="M1 4.98631C1 4.98631 34.91 0.947199 56.6647 1.00052C77.6993 1.05208 89.4501 5.26996 110.484 4.98631C128.279 4.74635 156 1.00052 156 1.00052"
@@ -104,9 +104,9 @@ export function WhyChooseUs() {
           </motion.div>
 
           {/* Card 2 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fadeIn} className="relative bg-neutral-50 rounded-xl p-6 md:col-span-2 md:row-span-2 overflow-hidden border border-[#F2672D]/8 h-[380px] sm:h-[340px] md:h-auto">
+          <motion.div {...hoverEffect} variants={itemVariants.fadeIn} className="relative bg-neutral-50 rounded-xl p-6 md:col-span-2 md:row-span-2 overflow-hidden border border-[#F2672D]/8 h-[270px] sm:h-[340px] md:h-auto">
             <div className="relative z-10">
-              <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>20,00,000+</GradientText></h3>
+              <h3><GradientText>20,00,000+</GradientText></h3>
               <p className="text-gray-600 mt-2 font-gtpro text-xl">catalogue products</p>
             </div>
             <Image src="/whyus/box.svg" alt="Drawer unit" width={400} height={300} className="absolute -bottom-4 -right-4 w-full h-auto xl:max-w-[75%] z-0" />
@@ -114,42 +114,42 @@ export function WhyChooseUs() {
 
           {/* Card 3 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromLeft} className="bg-neutral-50 rounded-xl md:row-span-2 flex flex-col justify-between border border-[#F2672D]/8">
-            <div className="p-6">
-              <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>#1 Interiors</GradientText></h3>
+            <div className="px-6 pt-6">
+              <h3><GradientText>#1 Interiors</GradientText></h3>
               <p className="text-gray-600 mt-2 font-gtpro text-xl">in Chennai</p>
             </div>
-            <div className="relative w-full h-56">
-              <Image src="/whyus/chennaiArt.svg" alt="Chennai skyline" fill className="object-cover" />
+            <div className="relative w-full h-50">
+              <Image src="/whyus/chennaiArt.svg" alt="Chennai skyline" fill className="sm:object-cover" />
             </div>
           </motion.div>
 
           {/* Card 4 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
-            <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>45-days</GradientText></h3>
+            <h3><GradientText>45-days</GradientText></h3>
             <p className="text-gray-600 mt-2 font-gtpro text-xl">move-in guaranty¹</p>
           </motion.div>
 
           {/* Card 5 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
-            <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>146+</GradientText></h3>
+            <h3><GradientText>146+</GradientText></h3>
             <p className="text-gray-600 mt-2 font-gtpro text-xl">Quality checks</p>
           </motion.div>
 
           {/* Card 6 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
-            <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>10+ Awards</GradientText></h3>
+            <h3><GradientText>10+ Awards</GradientText></h3>
             <p className="text-gray-600 mt-2 font-gtpro text-xl">for Innovative Designs</p>
           </motion.div>
 
           {/* Card 7 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="relative bg-neutral-50 rounded-xl p-6 overflow-hidden border border-[#F2672D]/10 md:col-span-2">
             <div className="relative z-10">
-              <h3 className="text-4xl lg:text-5xl font-bold"><GradientText>12+ Years</GradientText></h3>
+              <h3><GradientText>12+ Years</GradientText></h3>
               <p className="text-gray-600 mt-2 font-gtpro text-xl">of legacy</p>
             </div>
             <div className="absolute inset-0 bg-neutral-50 z-0" />
             <Image src="/whyus/kitchen.png" alt="Kitchen" fill className="object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
-            <div className="absolute left-1/2 -translate-x-3 md:translate-x-0 top-0 h-full w-40 lg:w-20 bg-gradient-to-r from-neutral-50 to-neutral-10 z-10 pointer-events-none" />
+            <div className="hidden sm:block absolute left-1/2 -translate-x-3 md:translate-x-0 top-0 h-full w-40 lg:w-20 bg-gradient-to-r from-neutral-50 to-neutral-10 z-10 pointer-events-none" />
           </motion.div>
         </motion.div>
       </div>

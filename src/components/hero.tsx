@@ -67,10 +67,10 @@ const Hero = () => {
 
 
   return (
-    <section className="relative pt-8 overflow-hidden max-h-screen">
+    <section className="relative pt-8 overflow-hidden min-h-screen">
       <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 pt-10 md:pt-16 pb-20 md:pb-24">
         <motion.div 
-          className="relative aspect-[7/12] sm:aspect-[7/9] md:aspect-[16/12] lg:aspect-[16/11] xl:aspect-[16/7] w-full rounded-4xl sm:rounded-3xl overflow-hidden "
+          className="relative aspect-[7/12] md:aspect-[16/20] lg:aspect-[16/9] xl:aspect-[16/7] w-full rounded-4xl sm:rounded-3xl overflow-hidden "
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -155,12 +155,12 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="hidden absolute inset-0 md:flex justify-end items-center -translate-x-10 xl:-translate-x-18 -translate-y-10 "
+          className="hidden absolute inset-0 md:flex justify-end items-center -translate-x-10 xl:-translate-x-18 -translate-y-10 lg:-translate-y-1/5 xl:-translate-20  "
           variants={itemVariants1}
           initial="hidden"
           animate="visible"
         >
-          <div className="bg-white p-6 rounded-2xl drop-shadow-xl max-w-[360px] xl:max-w-[420px] border-[1px]">
+          <div className="bg-white p-6 rounded-2xl drop-shadow-xl max-w-xs lg:max-w-sm xl:max-w-[420px] border-[1px]">
               <div className="flex items-center gap-3">
                   <Image src="/Avatar.png" alt="Aishwarya R." width={48} height={48} className="rounded-full w-10 h-10 lg:w-12 lg:h-12" />
                   <div>
@@ -184,7 +184,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div 
-            className="hidden md:block absolute translate-x-6 xl:translate-x-20 translate-y-4 -mt-20 z-10 bg-white p-4 xl:p-6 rounded-2xl drop-shadow-2xl max-w-[280px] lg:max-w-xs xl:max-w-sm mx-auto border-[1px]"
+            className="hidden md:block absolute translate-x-6 xl:translate-x-16 translate-y-4 -mt-20 z-10 bg-white p-4 xl:p-6 rounded-2xl drop-shadow-2xl max-w-[30%] lg:max-w-[30%] xl:max-w-[22%] mx-auto border-[1px]"
             variants={itemVariants}
             initial="hidden"
             animate="visible"
@@ -192,8 +192,8 @@ const Hero = () => {
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
             <h3 className="text-base lg:text-xl font-normal text-black font-gtpro">Make yourself at Home</h3>
-            <p className="mt-2 text-sm xl:text-base text-slate-600 font-gtpro">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
-            <Button className="relative mt-4 w-full bg-[#F86642] hover:bg-orange-600 text-base xl:text-lg text-white font-medium py-6 shadow-[2px_10px_30px_-6px_#F86642]/60 rounded-xl cursor-pointer active:scale-102 font-gtpro">
+            <p className="mt-2 text-sm lg:text-base text-slate-600 font-gtpro">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
+            <Button className="relative mt-4 w-full bg-[#F86642] hover:bg-orange-600 text-sm lg:text-base xl:text-base text-white font-medium py-6 shadow-[2px_10px_30px_-6px_#F86642]/60 rounded-xl cursor-pointer active:scale-102 font-gtpro">
                 BOOK A FREE CONSULTATION
             </Button>
         </motion.div>
@@ -201,7 +201,7 @@ const Hero = () => {
         
 
         <motion.div 
-          className="mt-4 md:mt-6 md:ml-[38%] lg:ml-[35%] xl:ml-[30%] relative overflow-hidden "
+          className="mt-4 md:mt-6 relative md:left-1/2 md:-translate-x-16 lg:-translate-[15%] xl:-translate-x-[27%] overflow-hidden max-w-xl sm:max-w-3xl md:max-w-lg lg:max-w-xl xl:max-w-[70%] "
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

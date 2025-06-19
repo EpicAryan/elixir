@@ -32,7 +32,7 @@ export function StayInTheKnow() {
   return (
     <section
       ref={ref}
-      className="bg-white py-28 text-center overflow-hidden"
+      className="bg-white pb-16  sm:py-28 text-center overflow-hidden"
     >
       <motion.div
         className="container mx-auto px-4"
@@ -41,14 +41,14 @@ export function StayInTheKnow() {
         animate={isInView ? 'visible' : 'hidden'}
       >
         <motion.p
-          className="text-sm text-[#AF7B5B] font-semibold tracking-wider font-gtpro"
+          className="text-xs sm:text-sm text-[#AF7B5B] font-semibold sm:tracking-wider font-gtpro"
           variants={itemVariants}
         >
           SERIOUS ABOUT DESIGN, FUN ABOUT EVERYTHING ELSE.
         </motion.p>
 
         <motion.h2
-          className="text-4xl md:text-5xl font-semibold text-gray-800 mt-2 font-gtpro"
+          className="text-2xl sm:text-4xl md:text-5xl font-semibold text-gray-800 mt-2 font-gtpro"
           variants={itemVariants}
         >
           Stay in the{' '}

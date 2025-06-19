@@ -22,9 +22,9 @@ const AnimatedDigit = ({ digit, isInView, index, className = "", }: { digit: num
         initial={{ y: 0 }}
         animate={{ y: isInView ? `-${digit * DIGIT_HEIGHT_EM}em` : 0 }}
         transition={{
-          duration: 1.5,
-          delay: 0.5 + index * 0.1,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 4,
+          delay: 0.05 + index * 0.15,
+          ease: [0.25, 1, 0.5, 1],
         }}
         className="flex flex-col"
       >
@@ -43,7 +43,10 @@ const AnimatedDigit = ({ digit, isInView, index, className = "", }: { digit: num
 };
 
 const AnimatedNumber = ({ value, isInView }: { value: number; isInView: boolean; }) => {
-  const digits = String(value).split("").map(Number);
+  const digits = String(value)
+    .split("")
+    .filter((char) => /\d/.test(char)) 
+    .map(Number);
 
   return (
     <div
@@ -61,7 +64,7 @@ const AnimatedNumber = ({ value, isInView }: { value: number; isInView: boolean;
 
 export function ImpactSection() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.4 });
+  const isInView = useInView(sectionRef, { amount: 0.2 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +81,7 @@ export function ImpactSection() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: easeOut },
+      transition: { duration: 0.5, ease: easeOut },
     },
   };
 
