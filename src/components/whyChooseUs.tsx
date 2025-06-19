@@ -119,7 +119,7 @@ export function WhyChooseUs() {
               <p className="text-gray-600 mt-2 font-gtpro text-xl">in Chennai</p>
             </div>
             <div className="relative w-full h-50">
-              <Image src="/whyus/chennaiArt.svg" alt="Chennai skyline" fill className="sm:object-cover" />
+              <Image src="/whyus/chennaiArt.svg" alt="Chennai skyline" fill className="object-cover" />
             </div>
           </motion.div>
 
