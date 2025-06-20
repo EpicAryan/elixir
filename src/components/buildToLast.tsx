@@ -1,108 +1,142 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'motion/react'; 
-import Image from 'next/image';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'motion/react';
 import { WavyUnderline } from './icons/WavyUnderline';
+import { useBreakpoint } from '../hooks/use-breakpoint';
+
+const mediaSources = {
+  mobile: {
+    type: 'vimeo',
+    src: 'https://player.vimeo.com/video/1094717089?h=ebf3994118&background=1',
+  },
+  desktop: {
+    type: 'vimeo',
+    src: 'https://player.vimeo.com/video/1094713905?h=3dbbe5b82b&background=1',
+  },
+};
 
 export function BuiltToLast() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5 });
-  const controls = useAnimation();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const underlineRef = useRef<HTMLDivElement>(null);
+  const breakpoint = useBreakpoint();
+  const isInView = useInView(underlineRef, { once: false, amount: 0.5 });
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [isInView, controls]);
+  const isCompact = breakpoint === 'mobile' || breakpoint === 'sm' || breakpoint === 'md';
+  const isMobile = breakpoint === 'mobile';
+  const mediaSource = isCompact ? mediaSources.mobile : mediaSources.desktop;
 
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
 
-  const textItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  // Responsive scroll transforms only on desktop
+  const scrollWidth = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6],
+    breakpoint === 'sm'
+      ? ['56%', '70%', '100%']
+      :breakpoint === 'md'
+      ? ['40%', '70%', '100%']
+      : breakpoint === 'lg'
+      ? ['38%', '80%', '100%']
+      : breakpoint === 'xl'
+      ? ['30%', '65%', '100%']
+      : breakpoint === '2xl'
+      ? ['20%', '85%', '100%']
+      :  ['20%', '85%', '100%']
+  );
+
+  const scrollHeight = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6],
+    breakpoint === 'sm'
+      ? ['40%', '70%', '100%']
+      :breakpoint === 'md'
+      ? ['40%', '65%', '85%']
+      : breakpoint === 'lg'
+      ? ['39%', '45%', '80%']
+      : breakpoint === 'xl'
+      ? ['38%', '60%', '80%']
+      : breakpoint === '2xl'
+      ? ['42%', '75%', '90%']
+      : ['42%', '75%', '90%']
+  );
+
+  const scrollScale = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6],
+    breakpoint === 'sm'
+      ? [1.5, 1.2, 1.2]
+      :breakpoint === 'md'
+      ? [1.5, 1.6, 1.7]
+      : breakpoint === 'lg'
+      ? [2.3, 1.5, 1.75]
+      : breakpoint === 'xl'
+      ? [2.2, 1.7, 1.4]
+      : breakpoint === '2xl'
+      ? [2.2, 1.2, 1.15]
+      : [2.2, 1.2, 1.15]
+  );
+
+  const width = isMobile ? '100%' : scrollWidth;
+  const height = isMobile ? '75%' : scrollHeight;
+  const scale = isMobile ? 1.2 : scrollScale;
+
+  const textOpacity = useTransform(scrollYProgress, [0.2, 0.4], [1, 0]);
+  const textTranslateY = useTransform(scrollYProgress, [0.2, 0.4], [0, -50]);
 
   return (
     <section
-      ref={ref}
-      className="relative py-24 md:py-32 bg-white overflow-hidden"
+      ref={containerRef}
+      className={`relative  ${isMobile ? 'h-screen' : 'h-[250vh]'} bg-white`}
     >
-      {/* Decorative BG Top-Left Image */}
-      <Image
-        src="/bg-design.png"
-        alt="Decorative Design"
-        width={300}
-        height={300}
-        className="absolute top-0 left-0 z-0 pointer-events-none  -translate-y-8 w-40 h-auto sm:w-56 md:w-60 lg:w-76"
-      />
-
-      <div className="container mx-auto px-4 relative">
-        {/* Center Image */}
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+        {/* Expandable container */}
         <motion.div
-          className="relative mx-auto w-full max-w-sm z-0"
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
+          style={{ width, height }}
+          className="absolute overflow-hidden rounded-md shadow-xl z-0 bg-black"
         >
-          <Image
-            src="/truck.png"
-            alt="Truck with a blue tarp seen from above"
-            width={400}
-            height={600}
-            className="rounded-md shadow-xl w-full h-auto"
+          <motion.iframe
+            src={mediaSource.src}
+            title="Vimeo Background Video"
+            className="absolute top-0 left-0 w-full h-full"
+            style={{ scale }}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
           />
+          <div className="pointer-events-none absolute inset-0 bg-black/30 z-10" />
         </motion.div>
 
-        {/* Text Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center z-10 px-4 text-center">
-          <motion.div
-            className="flex flex-col items-center"
-            initial="hidden"
-            animate={controls}
-            variants={containerVariants}
-          >
-            <motion.p
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800"
-              variants={textItemVariants}
-            >
-              Built to last.
-            </motion.p>
+        {/* Text content */}
+        <motion.div
+          style={{ opacity: textOpacity, y: textTranslateY }}
+          className="relative z-20 flex flex-col items-center text-center text-white md:text-gray-300"
+        >
+          <p className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+            Built to last.
+          </p>
 
-            <motion.div
-              className="mt-4 flex items-end gap-2"
-              variants={textItemVariants}
-            >
-              <div className="relative inline-block">
-                <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text text-transparent">
-                  10 years
-                </span>
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2">
-                  <WavyUnderline
-                    isInView={isInView}
-                    className="w-[120px] sm:w-[190px] md:w-[230px] h-auto"
-                  />
-                </div>
-              </div>
-
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800">
-                warranty
+          <div className="mt-4 flex items-end gap-2">
+            <div className="relative inline-block" ref={underlineRef}>
+              <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text text-3xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
+                10 years
               </span>
-            </motion.div>
-          </motion.div>
-        </div>
+              <div className="absolute -bottom-2 left-1/2 mt-2 -translate-x-1/2 sm:-bottom-4">
+                <WavyUnderline
+                  isInView={isInView}
+                  className="h-auto w-[120px] sm:w-[190px] md:w-[230px]"
+                />
+              </div>
+            </div>
+
+            <span className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+              warranty
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
