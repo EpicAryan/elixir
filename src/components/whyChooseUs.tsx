@@ -57,7 +57,7 @@ export function WhyChooseUs() {
           transition={{ duration: 0.5 }}
           ref={ref}
         >
-          <p className="text-xs font-semibold text-[#AF7B5B] tracking-[0.11rem] font-gtpro z-20">
+          <p className="text-xs font-semibold text-[#AF7B5B] tracking-wider sm:tracking-[0.11rem] font-gtpro z-20">
             SERIOUS ABOUT DESIGN, FUN ABOUT EVERYTHING ELSE.
           </p>
 
@@ -103,6 +103,31 @@ export function WhyChooseUs() {
             <p className="text-gray-600 mt-2 font-gtpro text-base lg:text-xl">flat warranty¹</p>
           </motion.div>
 
+          {/* Reordered Card 4 & 5 for mobile */}
+          <div className="flex flex-col gap-6 md:hidden">
+            {/* Card 4 - Mobile */}
+            <motion.div
+              {...hoverEffect}
+              variants={itemVariants.fromRight}
+              className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8"
+            >
+              <h3><GradientText>45-days</GradientText></h3>
+              <p className="text-gray-600 mt-2 font-gtpro text-xl">move-in guaranty¹</p>
+            </motion.div>
+
+            {/* Card 5 - Mobile */}
+            <motion.div
+              {...hoverEffect}
+              variants={itemVariants.fromRight}
+              className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8"
+            >
+              <h3><GradientText>146+</GradientText></h3>
+              <p className="text-gray-600 mt-2 font-gtpro text-xl">Quality checks</p>
+            </motion.div>
+          </div>
+
+
+
           {/* Card 2 */}
           <motion.div {...hoverEffect} variants={itemVariants.fadeIn} className="relative bg-neutral-50 rounded-xl p-6 md:col-span-2 md:row-span-2 overflow-hidden border border-[#F2672D]/8 h-[270px] sm:h-[340px] md:h-auto">
             <div className="relative z-10">
@@ -124,13 +149,13 @@ export function WhyChooseUs() {
           </motion.div>
 
           {/* Card 4 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
             <h3><GradientText>45-days</GradientText></h3>
             <p className="text-gray-600 mt-2 font-gtpro text-xl">move-in guaranty¹</p>
           </motion.div>
 
           {/* Card 5 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
             <h3><GradientText>146+</GradientText></h3>
             <p className="text-gray-600 mt-2 font-gtpro text-xl">Quality checks</p>
           </motion.div>
@@ -148,8 +173,9 @@ export function WhyChooseUs() {
               <p className="text-gray-600 mt-2 font-gtpro text-xl">of legacy</p>
             </div>
             <div className="absolute inset-0 bg-neutral-50 z-0" />
-            <Image src="/whyus/kitchen.png" alt="Kitchen" fill className="object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
-            <div className="hidden sm:block absolute left-1/2 -translate-x-3 md:translate-x-0 top-0 h-full w-40 lg:w-20 bg-gradient-to-r from-neutral-50 to-neutral-10 z-10 pointer-events-none" />
+            <Image src="/whyus/kitchen.png" alt="Kitchen" fill className="hidden sm:block md:hidden lg:block object-contain lg:object-cover xl:object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
+            <div className="hidden sm:block md:hidden xl:block  absolute inset-0 w-20 left-1/2 -translate-x-3 md:translate-x-6 top-0 bg-gradient-to-r from-neutral-50 to-white z-20 "/>
+
           </motion.div>
         </motion.div>
       </div>

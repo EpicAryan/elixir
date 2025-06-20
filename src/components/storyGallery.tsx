@@ -119,7 +119,7 @@ export function StoryGallerySection() {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.p variants={itemVariants} className="text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-[#AF7B5B] font-gtpro mb-1">
+          <motion.p variants={itemVariants} className="text-[10px] md:text-xs font-semibold tracking-wider sm:tracking-[0.2em] uppercase text-[#AF7B5B] font-gtpro mb-1">
             WE BRING THE WOW (AND THE WHERE DID YOU GET THAT?).
           </motion.p>
           <motion.div variants={itemVariants} className="relative inline-block mt-2">
