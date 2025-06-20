@@ -119,7 +119,7 @@ export function BuiltToLast() {
             Built to last.
           </p>
 
-          <div className="mt-4 flex items-end gap-2">
+          <div className="mt-4 flex items-end gap-3 sm:gap-4">
             <div className="relative inline-block" ref={underlineRef}>
               <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text text-3xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
                 10 years
@@ -132,7 +132,7 @@ export function BuiltToLast() {
               </div>
             </div>
 
-            <span className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+            <span className="text-3xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
               warranty
             </span>
           </div>
