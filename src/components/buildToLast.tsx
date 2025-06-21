@@ -35,7 +35,9 @@ export function BuiltToLast() {
   const scrollWidth = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
-    breakpoint === 'sm'
+    breakpoint === 'mobile'
+      ? ['45%', '100%', '100%']
+      :breakpoint === 'sm'
       ? ['56%', '70%', '100%']
       :breakpoint === 'md'
       ? ['40%', '70%', '100%']
@@ -51,7 +53,9 @@ export function BuiltToLast() {
   const scrollHeight = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
-    breakpoint === 'sm'
+    breakpoint === 'mobile'
+      ? ['35%', '80%', '80%']
+      :breakpoint === 'sm'
       ? ['40%', '70%', '100%']
       :breakpoint === 'md'
       ? ['40%', '65%', '85%']
@@ -60,14 +64,16 @@ export function BuiltToLast() {
       : breakpoint === 'xl'
       ? ['38%', '60%', '80%']
       : breakpoint === '2xl'
-      ? ['42%', '75%', '90%']
+      ? ['42%', '70%', '92%']
       : ['42%', '75%', '90%']
   );
 
   const scrollScale = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
-    breakpoint === 'sm'
+    breakpoint === 'mobile'
+      ? [1.35, 1.23, 1.35]
+      : breakpoint === 'sm'
       ? [1.5, 1.2, 1.2]
       :breakpoint === 'md'
       ? [1.5, 1.6, 1.7]
@@ -76,13 +82,13 @@ export function BuiltToLast() {
       : breakpoint === 'xl'
       ? [2.2, 1.7, 1.4]
       : breakpoint === '2xl'
-      ? [2.2, 1.2, 1.15]
+      ? [2.2, 1.3, 1.2]
       : [2.2, 1.2, 1.15]
   );
 
-  const width = isMobile ? '100%' : scrollWidth;
-  const height = isMobile ? '75%' : scrollHeight;
-  const scale = isMobile ? 1.2 : scrollScale;
+  const width = scrollWidth;
+  const height = scrollHeight;
+  const scale = scrollScale;
 
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.4], [1, 0]);
   const textTranslateY = useTransform(scrollYProgress, [0.2, 0.4], [0, -50]);
@@ -113,7 +119,7 @@ export function BuiltToLast() {
         {/* Text content */}
         <motion.div
           style={{ opacity: textOpacity, y: textTranslateY }}
-          className="relative z-20 flex flex-col items-center text-center text-white md:text-gray-300"
+          className="relative z-20 flex flex-col items-center text-center text-gray-300"
         >
           <p className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
             Built to last.
