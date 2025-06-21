@@ -1,4 +1,4 @@
-import { HeroSection } from "@/components";
+import { HeroSection, Projects } from "@/components";
 import { ImpactSection } from "@/components";
 import { StoryGallerySection } from "@/components";
 import { WhyChooseUs } from "@/components";
@@ -30,6 +30,7 @@ export default function Home() {
       </div>
 
       <DreamSpaceCta />
+      <Projects/>
       <BuiltToLast />
       <HappyHomes />
       <StayInTheKnow />

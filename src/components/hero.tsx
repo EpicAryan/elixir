@@ -76,7 +76,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="/hero-section.jpg"
+            src="/hero-1.png"
             alt="Modern living room"
             fill
             className="object-cover"

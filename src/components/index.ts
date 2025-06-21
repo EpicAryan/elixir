@@ -1,4 +1,4 @@
-import { Navbar } from "./nabvbar";
+import { Navbar } from "./navbar";
 import  HeroSection  from "./hero";
 import { ImpactSection } from "./impact";
 import { StoryGallerySection } from "./storyGallery";
@@ -8,6 +8,7 @@ import { BuiltToLast } from "./buildToLast";
 import { HappyHomes } from "./happyHome";
 import { StayInTheKnow } from "./StayInTheKnow";
 import { Footer } from "./Footer";
+import { Projects } from "./projects";
 
 export {
     Navbar,
@@ -19,5 +20,6 @@ export {
     BuiltToLast,
     HappyHomes,
     StayInTheKnow,
-    Footer
+    Footer,
+    Projects
 }

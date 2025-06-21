@@ -47,7 +47,7 @@ export function Navbar() {
           isScrolled ? 'bg-white/70 backdrop-blur-lg shadow-md' : 'bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-4">
+        <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} className="cursor-pointer">
