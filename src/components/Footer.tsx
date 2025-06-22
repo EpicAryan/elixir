@@ -102,22 +102,22 @@ export function Footer() {
                 <Image
                   src="/footer/image-1.png"
                   alt="Elixir stamp"
-                  width={120}
-                  height={80}
+                  width={400}
+                  height={400}
                   className="absolute -bottom-24 -right-8 md:-bottom-14 md:-right-5 w-48  h-auto transition-transform duration-300 hover:rotate-[5deg] hover:scale-105 z-30"
                 />
                 <Image
                   src="/footer/image-2.png"
                   alt="Stamp 2"
-                  width={150}
-                  height={100}
+                  width={400}
+                  height={400}
                   className="absolute top-0 -right-10 md:right-0 w-40 sm:w-44 md:w-36 h-auto transition-transform duration-300 hover:-rotate-[2deg] hover:scale-105 z-20"
                 />
                 <Image
                   src="/footer/image-3.png"
                   alt="Stamp 3"
-                  width={150}
-                  height={100}
+                  width={400}
+                  height={400}
                   className="absolute -bottom-12 md:-bottom-2 -left-6 sm:-left-10 md:left-0 w-52 md:w-40 h-auto transition-transform duration-300 hover:-rotate-[8deg] hover:scale-105"
                 />
               </div>

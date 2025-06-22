@@ -116,8 +116,8 @@ export function ImpactSection() {
                   key={i}
                   src={logo.src}
                   alt={logo.alt}
-                  width={90}
-                  height={90}
+                  width={400}
+                  height={400}
                   className="object-contain h-10 sm:h-14 w-auto"
                 />
               ))}
