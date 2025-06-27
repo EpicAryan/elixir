@@ -86,8 +86,8 @@ export function ImpactSection() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-white py-20 sm:py-28">
-      <div className="container mx-auto px-4 lg:pl-16 xl:pl-24">
+    <section ref={sectionRef} className="bg-white  my-8 xl:my-20">
+      <div className="px-4 lg:px-18 xl:px-20 2xl:px-24">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -125,15 +125,15 @@ export function ImpactSection() {
           </div>
 
           {/* Right Column: Animated Number */}
-          <motion.div variants={itemVariants} className="relative flex flex-col items-center justify-center min-h-[300px]">
-            <Image
-              src="/impact/impact-bg.png"
-              alt="House sketch background"
-              fill
-              className="object-contain z-0"
-            />
+          <motion.div variants={itemVariants} className="relative flex flex-col items-center lg:items-end justify-center min-h-[300px]">
             <div className="relative z-10 flex flex-col items-center">
-              <p className="text-sm lg:text-xs xl:text-sm font-normal tracking-[0.2em] text-[#AEAEAE] uppercase font-gtpro">
+              <Image
+                src="/impact/impact-bg.png"
+                alt="House sketch background"
+                fill
+                className="object-contain z-0"
+              />
+              <p className="text-sm lg:text-xs xl:text-sm font-normal tracking-[0.2em] text-[#AEAEAE] uppercase font-gtpro z-10">
                 Projects Completed This Year.
               </p>
               <AnimatedNumber value={361} isInView={isInView} />

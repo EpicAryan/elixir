@@ -79,10 +79,10 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#232529] text-[#9B9B9B] overflow-hidden">
-      <div className="container mx-auto px-4 overflow-x-hidden">
+      <div className="px-4 sm:px-6 md:px-16 overflow-x-hidden">
         <motion.div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 sm:gap-y-16 py-16"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-12 sm:gap-y-16 py-16"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}

@@ -47,35 +47,38 @@ export function Navbar() {
           isScrolled ? 'bg-white/70 backdrop-blur-lg shadow-md' : 'bg-transparent'
         }`}
       >
-        <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
+        <div className="px-4 sm:px-6 md:px-16 lg:px-16 2xl:px-24">
+          <div className="flex justify-between items-center h-16 sm:h-18 md:h-20">
             <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} className="cursor-pointer">
               <Link href="/" className="flex items-center gap-2">
-                <Image src="/logo.svg" alt="Elixir Logo" width={32} height={32} />
-                <span className="text-2xl font-semibold text-slate-800 font-gtpro uppercase tracking-wide">
+                <Image 
+                  src="/logo.svg" 
+                  alt="Elixir Logo" 
+                  width={32} 
+                  height={32} 
+                  className="w-7 h-7 sm:w-8 sm:h-8"
+                />
+                <span className="text-xl sm:text-2xl font-semibold text-slate-800 font-gtpro uppercase tracking-wide">
                   Elixir
                 </span>
               </Link>
             </motion.div>
 
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
                 <NavLink key={link.name} href={link.href}>
-                  {link.name}
+                  <span className="text-sm lg:text-base">{link.name}</span>
                 </NavLink>
               ))}
             </div>
 
-            {/* Desktop Button */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
-              <Button className="bg-[#F86642] text-white hover:bg-orange-600 font-gtpro rounded-md">
+              <Button className="bg-[#F86642] text-white hover:bg-orange-600 font-gtpro rounded-md text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-2.5">
                 Contact Us
               </Button>
             </motion.div>
 
-            {/* Hamburger */}
+
             <div className="md:hidden">
               <motion.button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -87,7 +90,7 @@ export function Navbar() {
                   animate={{ rotate: isMobileOpen ? 180 : 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
+                  {isMobileOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
                 </motion.div>
               </motion.button>
             </div>
@@ -95,7 +98,6 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -103,7 +105,7 @@ export function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: '-100%', opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-6 md:hidden"
+            className="fixed inset-0 bg-white z-40 flex flex-col pt-20 sm:pt-24 px-4 sm:px-12 md:hidden"
           >
             {navLinks.map((link, index) => (
               <motion.div
@@ -111,12 +113,12 @@ export function Navbar() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="mb-6"
+                className="mb-6 sm:mb-8"
               >
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="text-3xl font-semibold text-slate-800 hover:text-[#F2672D] font-gtpro"
+                  className="text-2xl sm:text-3xl font-semibold text-slate-800 hover:text-[#F2672D] font-gtpro"
                 >
                   {link.name}
                 </Link>
@@ -126,9 +128,9 @@ export function Navbar() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="pt-6"
+              className="pt-6 sm:pt-8"
             >
-              <Button className="w-full py-6 text-lg bg-[#F86642] text-white hover:bg-orange-600 font-gtpro rounded-md">
+              <Button className="w-full py-5 sm:py-6 text-lg sm:text-xl bg-[#F86642] text-white hover:bg-orange-600 font-gtpro rounded-md">
                 Contact Us
               </Button>
             </motion.div>

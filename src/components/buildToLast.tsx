@@ -23,7 +23,6 @@ export function BuiltToLast() {
   const isInView = useInView(underlineRef, { once: false, amount: 0.5 });
 
   const isCompact = breakpoint === 'mobile' || breakpoint === 'sm' || breakpoint === 'md';
-  const isMobile = breakpoint === 'mobile';
   const mediaSource = isCompact ? mediaSources.mobile : mediaSources.desktop;
 
   const { scrollYProgress } = useScroll({
@@ -36,11 +35,11 @@ export function BuiltToLast() {
     scrollYProgress,
     [0, 0.3, 0.6],
     breakpoint === 'mobile'
-      ? ['45%', '100%', '100%']
+      ? ['40%', '50%', '100%']
       :breakpoint === 'sm'
-      ? ['56%', '70%', '100%']
+      ? ['40%', '50%', '100%']
       :breakpoint === 'md'
-      ? ['40%', '70%', '100%']
+      ? ['29%', '50%', '100%']
       : breakpoint === 'lg'
       ? ['38%', '80%', '100%']
       : breakpoint === 'xl'
@@ -54,11 +53,11 @@ export function BuiltToLast() {
     scrollYProgress,
     [0, 0.3, 0.6],
     breakpoint === 'mobile'
-      ? ['35%', '80%', '80%']
+      ? ['35%', '50%', '90%']
       :breakpoint === 'sm'
-      ? ['40%', '70%', '100%']
+      ? ['40%', '70%', '80%']
       :breakpoint === 'md'
-      ? ['40%', '65%', '85%']
+      ? ['40%', '65%', '100%']
       : breakpoint === 'lg'
       ? ['39%', '45%', '80%']
       : breakpoint === 'xl'
@@ -74,9 +73,9 @@ export function BuiltToLast() {
     breakpoint === 'mobile'
       ? [1.35, 1.23, 1.35]
       : breakpoint === 'sm'
-      ? [1.5, 1.2, 1.2]
+      ? [1.5, 1.2, 1.8]
       :breakpoint === 'md'
-      ? [1.5, 1.6, 1.7]
+      ? [1.4, 1.6, 1.9]
       : breakpoint === 'lg'
       ? [2.3, 1.5, 1.75]
       : breakpoint === 'xl'
@@ -96,7 +95,7 @@ export function BuiltToLast() {
   return (
     <section
       ref={containerRef}
-      className={`relative  ${isMobile ? 'h-screen' : 'h-[250vh]'} bg-white`}
+      className={`relative  h-[250vh] bg-white`}
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         {/* Expandable container */}

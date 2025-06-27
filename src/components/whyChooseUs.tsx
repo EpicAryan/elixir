@@ -48,7 +48,7 @@ export function WhyChooseUs() {
   return (
     <section className="relative py-8 mb-8 bg-white min-h-full overflow-hidden">
 
-      <div className="container mx-auto px-6 md:px-4 lg:px-12 xl:px-32 relative z-10">
+      <div className=" px-6 md:px-16 xl:px-24 relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}

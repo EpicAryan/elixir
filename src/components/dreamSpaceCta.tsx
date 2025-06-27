@@ -54,9 +54,9 @@ export function DreamSpaceCta() {
   return (
     <section
       ref={ref}
-      className="bg-[#F2672D] overflow-hidden relative"
+      className="bg-[#F2672D] overflow-hidden relative mb-6 lg:mb-10"
     >
-      <div className="container mx-auto px-6 md:px-16 py-20 md:py-24">
+      <div className="px-6 md:px-16 xl:px-24 py-16 md:py-24">
         <motion.div
           className="relative z-10 flex flex-col md:flex-row justify-between items-center"
           variants={containerVariants}
