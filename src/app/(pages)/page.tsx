@@ -6,8 +6,10 @@ import { DreamSpaceCta } from "@/components";
 import { BuiltToLast } from "@/components";
 import { HappyHomes } from "@/components";
 import { StayInTheKnow } from "@/components";
+import { BlogSection } from "@/components/blogs/blogSection";
 import Image from "next/image";
 
+export const revalidate = 60
 
 export default function Home() {
   return (
@@ -31,6 +33,7 @@ export default function Home() {
       <Projects/>
       <BuiltToLast />
       <HappyHomes />
+      <BlogSection />
       <StayInTheKnow />
     </main>
   );
