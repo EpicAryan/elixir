@@ -5,7 +5,6 @@ import { WhyChooseUs } from "@/components";
 import { DreamSpaceCta } from "@/components";
 import { BuiltToLast } from "@/components";
 import { HappyHomes } from "@/components";
-import { Footer } from "@/components";
 import { StayInTheKnow } from "@/components";
 import Image from "next/image";
 
@@ -17,7 +16,6 @@ export default function Home() {
       <ImpactSection />
       <StoryGallerySection />
 
-      {/* Decoration Image overlapping bottom of StoryGallerySection and top of WhyChooseUs */}
       <div className="relative">
         <Image
           src="/bg-design.png"
@@ -34,7 +32,6 @@ export default function Home() {
       <BuiltToLast />
       <HappyHomes />
       <StayInTheKnow />
-      <Footer />
     </main>
   );
 }
