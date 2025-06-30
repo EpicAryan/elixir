@@ -32,7 +32,7 @@ export function StayInTheKnow() {
   return (
     <section
       ref={ref}
-      className="bg-white pb-16  sm:py-28 text-center overflow-hidden"
+      className="bg-white pb-16 sm:py-20 lg:py-28 text-center overflow-hidden"
     >
       <motion.div
         className="container mx-auto px-4"
