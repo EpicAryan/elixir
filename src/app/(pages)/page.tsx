@@ -5,7 +5,7 @@ import { WhyChooseUs } from "@/components";
 import { DreamSpaceCta } from "@/components";
 import { BuiltToLast } from "@/components";
 import { HappyHomes } from "@/components";
-import { StayInTheKnow } from "@/components";
+// import { StayInTheKnow } from "@/components";
 import { BlogSection } from "@/components/blogs/blogSection";
 import Image from "next/image";
 
@@ -33,8 +33,8 @@ export default function Home() {
       <Projects/>
       <BuiltToLast />
       <HappyHomes />
+      {/* <StayInTheKnow /> */}
       <BlogSection />
-      <StayInTheKnow />
     </main>
   );
 }

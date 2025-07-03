@@ -98,7 +98,7 @@ export function Footer() {
             <p className="text-sm mt-2">SERIOUS ABOUT DESIGN.</p>
             <p className="text-sm">FUN ABOUT EVERYTHING ELSE.</p>
             <div className="relative mt-8 h-56 md:h-40 w-full overflow-hidden">
-              <div className="relative h-28 w-full max-w-[12rem] mx-auto">
+              <div className="relative h-28 w-full max-w-[12rem]">
                 <Image
                   src="/footer/image-1.png"
                   alt="Elixir stamp"
@@ -111,14 +111,14 @@ export function Footer() {
                   alt="Stamp 2"
                   width={400}
                   height={400}
-                  className="absolute top-0 -right-10 md:right-0 w-40 sm:w-44 md:w-36 h-auto transition-transform duration-300 hover:-rotate-[2deg] hover:scale-105 z-20"
+                  className="absolute top-0 -right-10 w-40 sm:w-44 md:w-36 h-auto transition-transform duration-300 hover:-rotate-[2deg] hover:scale-105 z-20"
                 />
                 <Image
                   src="/footer/image-3.png"
                   alt="Stamp 3"
                   width={400}
                   height={400}
-                  className="absolute -bottom-12 md:-bottom-2 -left-6 sm:-left-10 md:left-0 w-52 md:w-40 h-auto transition-transform duration-300 hover:-rotate-[8deg] hover:scale-105"
+                  className="absolute -bottom-12 md:-bottom-2 -left-6 sm:-left-10 md:left-0 w-52 md:w-40 h-auto transition-transform duration-300 hover:-rotate-[-5deg] hover:scale-105"
                 />
               </div>
             </div>

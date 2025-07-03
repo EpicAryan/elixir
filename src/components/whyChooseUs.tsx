@@ -23,7 +23,7 @@ export function WhyChooseUs() {
   };
 
   const hoverEffect = {
-    whileHover: { scale: 1.03, boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)' },
+    whileHover: { scale: 1.005, boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)' },
   };
 
   const itemVariants = {
@@ -173,9 +173,7 @@ export function WhyChooseUs() {
               <p className="text-gray-600 mt-2 font-gtpro text-xl">of legacy</p>
             </div>
             <div className="absolute inset-0 bg-neutral-50 z-0" />
-            <Image src="/whyus/kitchen.png" alt="Kitchen" fill className="hidden sm:block md:hidden lg:block object-contain lg:object-cover xl:object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
-            <div className="hidden sm:block md:hidden xl:block  absolute inset-0 w-20 left-1/2 -translate-x-3 md:translate-x-6 top-0 bg-gradient-to-r from-neutral-50 to-white z-20 "/>
-
+            <Image src="/whyus/kitchen1.png" alt="Kitchen" fill className="hidden sm:block md:hidden lg:block object-contain lg:object-cover xl:object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
           </motion.div>
         </motion.div>
       </div>

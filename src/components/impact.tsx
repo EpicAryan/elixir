@@ -86,8 +86,8 @@ export function ImpactSection() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-white  my-8 xl:my-20">
-      <div className="px-4 lg:px-18 xl:px-20 2xl:px-24">
+    <section ref={sectionRef} className="bg-white my-8 xl:my-20">
+      <div className="container mx-auto px-4 lg:px-16 xl:px-24">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

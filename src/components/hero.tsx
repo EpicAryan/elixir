@@ -172,7 +172,7 @@ const Hero = () => {
               </p>
           </div>
         </motion.div>
-        <div className='flex gap-4'>
+        <div className='flex gap-1'>
           <motion.div 
               className="hidden md:block ml-6 2xl:ml-8 translate-y-4 -mt-20 z-10 bg-white p-4 2xl:p-6 rounded-2xl drop-shadow-2xl max-w-[30%] lg:max-w-[30%] 2xl:max-w-[25%] border-[1px]"
               variants={itemVariants}
@@ -191,13 +191,13 @@ const Hero = () => {
           
 
           <motion.div 
-            className="mt-4 2xl:mt-6  overflow-hidden max-w-xl sm:max-w-3xl md:max-w-lg  xl:max-w-[70%] "
+            className="mt-4 2xl:mt-6  overflow-hidden max-w-xl sm:max-w-3xl md:max-w-lg lg:max-w-[68%] xl:max-w-[72%] "
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-              <h4 className="md:text-xs xl:text-base 2xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] 2xl:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
+              <h4 className="ml-4 md:text-xs xl:text-base 2xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] 2xl:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
               <div className="relative w-full overflow-hidden">
                   <InfiniteMovingCardsDemo/>
               </div>

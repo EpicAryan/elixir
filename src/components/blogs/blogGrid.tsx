@@ -1,11 +1,12 @@
 'use client'
 
-import { easeOut, motion } from 'framer-motion'
+import { easeOut, motion, useInView } from 'framer-motion'
 import { PostCard } from './postCard'
 import type { Post } from '../../../@types/content'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import Link from 'next/link'
 import { Button } from '../ui/button'
+import { useRef } from 'react';
 
 type HomePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt'> & {
   author: { name: string; image?: SanityImageSource }
@@ -54,28 +55,75 @@ const fadeUpVariant = {
 }
 
 
+
 export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.5,
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: easeOut },
+    },
+  };
   return (
-    <div className="mx-auto max-w-7xl px-4 lg:px-16 2xl:px-8">
-      <motion.div 
-        className="mx-auto max-w-2xl text-center"
+    <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-16 2xl:px-8 mb-8 md:mb-16">
+      <motion.div
+        className="container mx-auto"
+        variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{  amount: 0.2 }}
-        transition={{ staggerChildren: 0.1 }} 
+        animate={isInView ? 'visible' : 'hidden'}
       >
-        <motion.h2
-          variants={fadeUpVariant}
-          className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl font-gtpro"
-        >
-          From Our Blog
-        </motion.h2>
         <motion.p
-          variants={fadeUpVariant}
-          className="mt-1 text-sm leading-8 text-gray-600 font-gtpro sm:text-lg"
+          className="text-xs sm:text-sm text-[#AF7B5B] font-semibold sm:tracking-wider font-gtpro text-center"
+          variants={itemVariants}
         >
-          Insights, updates, and stories from our team.
+          SERIOUS ABOUT DESIGN, FUN ABOUT EVERYTHING ELSE.
         </motion.p>
+
+        <motion.h2
+          className="text-2xl sm:text-4xl md:text-5xl font-semibold text-gray-800 mt-2 font-gtpro text-center"
+          variants={itemVariants}
+        >
+          Stay in the{' '}
+          <span className="relative inline-block">
+            know
+            {/* Animated SVG underline */}
+            <motion.svg
+              width="157"
+              height="6"
+              viewBox="0 0 157 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute -bottom-1 left-0 w-full h-auto"
+            >
+              <motion.path
+                d="M1 4.98631C1 4.98631 34.91 0.947199 56.6647 1.00052C77.6993 1.05208 89.4501 5.26996 110.484 4.98631C128.279 4.74635 156 1.00052 156 1.00052"
+                stroke="#F2672D"
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
+              />
+            </motion.svg>
+          </span>
+        </motion.h2>
       </motion.div>
 
       <motion.div
