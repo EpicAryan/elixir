@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 const GradientText = ({ children }: { children: React.ReactNode }) => (
-  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-3xl sm:text-4xl lg:text-[55px] font-semibold text-transparent">
+  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-3xl sm:text-4xl xl:text-5xl font-semibold text-transparent">
     {children}
   </span>
 );
@@ -47,8 +47,8 @@ export function WhyChooseUs() {
 
   return (
     <section className="relative py-8 mb-8 bg-white min-h-full overflow-hidden">
-
-      <div className=" px-6 md:px-16 xl:px-24 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 2xl:px-12 relative z-10">
+      {/* <div className=" px-6 md:px-16 xl:px-24 relative z-10"> */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
@@ -167,13 +167,20 @@ export function WhyChooseUs() {
           </motion.div>
 
           {/* Card 7 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="relative bg-neutral-50 rounded-xl p-6 overflow-hidden border border-[#F2672D]/10 md:col-span-2">
+          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="relative bg-neutral-50 rounded-xl p-6 overflow-hidden border border-[#F2672D]/10 md:col-span-2 flex items-center justify-between">
             <div className="relative z-10">
               <h3><GradientText>12+ Years</GradientText></h3>
               <p className="text-gray-600 mt-2 font-gtpro text-xl">of legacy</p>
             </div>
-            <div className="absolute inset-0 bg-neutral-50 z-0" />
-            <Image src="/whyus/kitchen1.png" alt="Kitchen" fill className="hidden sm:block md:hidden lg:block object-contain lg:object-cover xl:object-contain object-right z-0" sizes="(max-width: 768px) 100vw, 50vw" />
+             <div className="absolute inset-y-0 right-0 w-1/2 z-0">
+              <Image
+                src="/whyus/kitchen1.png"
+                alt="Kitchen"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>

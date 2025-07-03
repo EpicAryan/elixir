@@ -5,8 +5,10 @@ export const postsQuery = groq`
 *[_type == "post"] | order(publishedAt desc) [0...6] {
   _id,
   title,
+  description,
   slug,
   mainImage,
+  readingTime,
   publishedAt,
   "author": author->{name, image},
   "category": categories[0]->{title}
@@ -38,6 +40,8 @@ export const allPostsQuery = groq`
   title,
   slug,
   mainImage,
+  description,
+  readingTime,
   publishedAt,
   "author": author->{name, image},
   "category": categories[0]->{title}

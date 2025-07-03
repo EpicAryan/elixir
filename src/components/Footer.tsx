@@ -79,7 +79,7 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#232529] text-[#9B9B9B] overflow-hidden">
-      <div className="px-4 sm:px-6 md:px-16 2xl:px-24 overflow-x-hidden">
+      <div className="container mx-auto px-6 lg:px-8 2xl:px-12 overflow-x-hidden">
         <motion.div
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-12 sm:gap-y-16 py-16"

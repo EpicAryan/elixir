@@ -88,8 +88,17 @@ export function HappyHomes() {
           {/* Row 1 */}
           <GalleryImage src={images[0]} alt="img1" variants={animationVariants.fromTop} />
 
+          <div className="hidden md:block lg:hidden">
+            <GalleryImage
+              src={images[2]} // middle image
+              alt="img3"
+              variants={animationVariants.fromTop}
+              className="w-full"
+            />
+          </div>
+
           {/* Horizontal stack - responsive */}
-          <div className="lg:col-span-2 flex flex-col md:flex-row items-center gap-2">
+          <div className="hidden lg:col-span-2 lg:flex flex-col md:flex-row items-center gap-2">
             <GalleryImage
               src={images[1]}
               alt="img2"
@@ -138,7 +147,7 @@ export function HappyHomes() {
           <GalleryImage src={images[7]} alt="img8" variants={animationVariants.fromTop} />
           <GalleryImage src={images[8]} alt="img9" variants={animationVariants.fromTop} />
           <GalleryImage src={images[9]} alt="img10" variants={animationVariants.fromTop} />
-          <GalleryImage src={images[10]} alt="img11" variants={animationVariants.fromTop} />
+          <GalleryImage src={images[10]} alt="img11" variants={animationVariants.fromTop}  className='hidden lg:flex'/>
         </motion.div>
       </div>
     </section>

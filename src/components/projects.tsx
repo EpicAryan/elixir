@@ -3,7 +3,7 @@ import { Compare } from "@/components/ui/compare";
 
 export function Projects() {
   return (
-    <div className="w-full h-full px-6 sm:px-8 md:px-8 lg:px-28 2xl:px-36 pt-10 font-gtpro">
+    <div className="w-full h-full container mx-auto px-6 lg:px-8 2xl:px-12 pt-10 font-gtpro">
       {/* Title and Subtitle */}
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-neutral-900">
@@ -16,7 +16,7 @@ export function Projects() {
 
       {/* Grid layout for all three Compare components */}
       {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[70vh]"> */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[40vh]">
+      <div className="grid grid-cols-1 gap-6 h-[40vh]">
         {/* First Compare - spans two columns on md+ */}
         <div className="md:col-span-2 max-h-[200px] md:max-h-[300px] lg:max-h-[400px] w-full rounded-3xl">
           <Compare

@@ -34,9 +34,9 @@ export function BuiltToLast() {
     scrollYProgress,
     [0, 0.3, 0.6],
     breakpoint === 'mobile'
-      ? ['35%', '55%', '85%'] 
+      ? ['35%', '55%', '100%'] 
       : breakpoint === 'sm'
-      ? ['40%', '60%', '90%']
+      ? ['40%', '60%', '98%']
       : breakpoint === 'md'
       ? ['40%', '73%', '100%']
       : breakpoint === 'lg'
@@ -45,24 +45,24 @@ export function BuiltToLast() {
       ? ['30%', '66%', '100%']
       : breakpoint === '2xl'
       ? ['20%', '85%', '100%']
-      : ['20%', '85%', '94%']
+      : ['20%', '85%', '100%']
   );
 
   const scrollHeight = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6],
     breakpoint === 'mobile'
-      ? ['35%', '55%', '80%'] 
+      ? ['30%', '50%', '83%'] 
       : breakpoint === 'sm'
       ? ['40%', '70%', '85%']
       : breakpoint === 'md'
-      ? ['30%', '45%', '60%']
+      ? ['28%', '40%', '53%']
       : breakpoint === 'lg'
-      ? ['39%', '44%', '60%']
+      ? ['39%', '45%', '65%']
       : breakpoint === 'xl'
-      ? ['38%', '54%', '75%']
+      ? ['38%', '50%', '75%']
       : breakpoint === '2xl'
-      ? ['42%', '72%', '80%']
+      ? ['39%', '72%', '80%']
       : ['42%', '75%', '70%']
   );
 
@@ -70,13 +70,13 @@ export function BuiltToLast() {
     scrollYProgress,
     [0, 0.3, 0.6],
     breakpoint === 'mobile'
-      ? [1.25, 1.2, 1.2] 
+      ? [1.25, 1.2, 1.3] 
       : breakpoint === 'sm'
       ? [1.5, 1.3, 1.35]
       : breakpoint === 'md'
-      ? [1.7, 1.3, 1.3]
+      ? [1.7, 1.35, 1.35]
       : breakpoint === 'lg'
-      ? [1.8, 1.1, 1.1]
+      ? [1.8, 1.2, 1.2]
       : breakpoint === 'xl'
       ? [1.8, 1.1, 1.1]
       : breakpoint === '2xl'
@@ -94,12 +94,12 @@ export function BuiltToLast() {
   return (
     <section
       ref={containerRef}
-      className="relative container mx-auto h-[250vh] bg-white"
+      className="relative container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 h-[250vh] bg-white"
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         <motion.div
           style={{ width, height }}
-          className="relative overflow-hidden rounded-xl shadow-2xl bg-black"
+          className="relative overflow-hidden rounded-2xl shadow-2xl bg-black"
         >
           <div className="absolute inset-0 w-full h-full">
             <motion.div

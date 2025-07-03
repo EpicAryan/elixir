@@ -29,40 +29,42 @@ const letterVariants = {
 const AnimatedTitle = ({ title }: { title: string }) => {
   return (
     <motion.h3
-      className="mb-3 text-lg font-bold leading-tight font-manrope line-clamp-2 min-h-[3rem] sm:text-xl
-      text-gray-800 group-hover:text-[#F86642]/90 transition-colors duration-300 ease-in-out"
-      
+      className="text-base font-bold leading-tight font-manrope md:text-lg text-gray-800 group-hover:text-[#F86642]/90 transition-colors duration-300 ease-in-out text-pretty"
       variants={titleContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      {title.split('').map((char, index) => (
-        <motion.span key={index} variants={letterVariants} className="inline-block">
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
+      {title.split(' ').map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block mr-1">
+          {word.split('').map((char, charIndex) => (
+            <motion.span key={charIndex} variants={letterVariants} className="inline-block">
+              {char}
+            </motion.span>
+          ))}
+        </span>
       ))}
     </motion.h3>
   )
 }
 
 
-type PostCardProps = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt'> & {
+type PostCardProps = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt' | 'description' | 'readingTime'> & {
   author: { name: string; image?: SanityImageSource }
   category: { title: string }
 }
 
 export const PostCard = ({ post }: { post: PostCardProps }) => {
-  const authorImage = post.author.image ? urlForImage(post.author.image).width(40).height(40).fit('crop').url() : '/default-avatar.png';
-
+  // const authorImage = post.author.image ? urlForImage(post.author.image).width(40).height(40).fit('crop').url() : '/default-avatar.png';
+  console.log('Rendering:', { readingTime: post.readingTime, typeof: typeof post.readingTime })
   return (
     <motion.div
-      whileHover={{ y: -5, scale: 1.02, boxShadow: "0px 10px 20px -5px rgba(0,0,0,0.1)" }}
-      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      className="h-full"
+      whileHover={{ y: -5, scale: 1.01  }}
+      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      className="h-full "
     >
-      <Link href={`/blog/${post.slug.current}`} className="group flex h-full flex-col border border-gray-200/80 p-2 rounded-lg bg-gray-50/70 shadow-sm transition-shadow duration-300 hover:shadow-md">
-        <div className="relative mb-2 w-full overflow-hidden rounded-lg sm:mb-4 h-48 sm:h-56">
+      <Link href={`/blog/${post.slug.current}`} className="group flex h-full flex-col border border-gray-200 p-4 rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)]">
+        <div className="relative mb-2 w-full overflow-hidden rounded-lg sm:mb-4 h-48 sm:h-60">
           <Image
             src={urlForImage(post.mainImage).width(500).height(350).url()}
             alt={post.mainImage.alt || 'Blog post image'}
@@ -71,24 +73,19 @@ export const PostCard = ({ post }: { post: PostCardProps }) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <div className="flex flex-1 flex-col p-2">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#F86642] font-gtpro sm:text-sm">
+        <div className="flex flex-1 flex-col gap-2 ">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#F86642] font-gtpro md:text-sm">
             {post.category.title}
           </p>
           <AnimatedTitle title={post.title} />
-          <div className="mt-auto flex items-center gap-x-3 text-sm text-gray-500">
-            <Image
-              src={authorImage}
-              alt={post.author.name || 'Author'}
-              width={40}
-              height={40}
-              className="h-6 w-6 rounded-full object-cover"
-            />
-            <span className="text-sm">{post.author.name}</span>
-            <span className="text-gray-400">•</span>
-            <time dateTime={post.publishedAt} className="text-xs">
+          <div className='text-gray-600 text-xs md:text-sm line-clamp-3'>{post.description}</div>
+          <div className="mt-auto flex items-center gap-x-3 text-xs md:text-sm text-gray-800 font-semibold justify-between">
+            <time dateTime={post.publishedAt}>
               {format(new Date(post.publishedAt), 'MMM dd, yyyy')}
             </time>
+            <span>• {post.readingTime} Min Read</span>
+            
+            <span>{post.author.name}</span>
           </div>
         </div>
       </Link>

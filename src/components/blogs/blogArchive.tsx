@@ -6,7 +6,7 @@ import type { Post } from '../../../@types/content'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 
-type ArchivePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt'> & {
+type ArchivePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt' | 'description' | 'readingTime'> & {
   author: { name: string; image?: SanityImageSource }
   category: { title: string }
 }
@@ -52,7 +52,7 @@ const fadeUpVariant = {
 export const BlogArchive = ({ posts }: { posts: ArchivePagePost[] }) => {
   return (
     <section className="bg-white py-16 sm:py-24 mt-4">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Animated Title */}
         <motion.div
@@ -78,7 +78,7 @@ export const BlogArchive = ({ posts }: { posts: ArchivePagePost[] }) => {
 
         {/* Animated Grid */}
         <motion.div
-          className="mx-auto mt-16 grid grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none sm:grid-cols-2 lg:grid-cols-3"
+          className="mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-8 max-w-6xl"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"

@@ -87,12 +87,13 @@ export function ImpactSection() {
 
   return (
     <section ref={sectionRef} className="bg-white my-8 xl:my-20">
-      <div className="container mx-auto px-4 lg:px-16 xl:px-24">
+      <div className="container mx-auto px-6 lg:px-8 2xl:px-12">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 lg:gap-8 items-center"
+          // className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 lg:gap-8 items-center"
+          className="flex flex-col lg:flex-row justify-between lg:justify-around items-center sm:gap-6 md:gap-20"
         >
           {/* Left Column: Text Content */}
           <div className="flex flex-col text-center lg:text-left items-center lg:items-start font-gtpro">

@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 import { useRef } from 'react';
 
-type HomePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt'> & {
+export type HomePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt' | 'description' | 'readingTime'> & {
   author: { name: string; image?: SanityImageSource }
   category: { title: string }
 }
@@ -82,9 +82,9 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
     },
   };
   return (
-    <div ref={ref} className="mx-auto max-w-7xl px-4 lg:px-16 2xl:px-8 mb-8 md:mb-16">
+    <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mb-8 md:mb-16">
       <motion.div
-        className="container mx-auto"
+        className=""
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
@@ -127,7 +127,7 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
       </motion.div>
 
       <motion.div
-        className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:mt-16 sm:gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+        className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-8  mt-8 sm:mt-16 max-w-xs sm:max-w-6xl"
         variants={gridContainerVariants}
         initial="hidden"
         whileInView="visible"
@@ -147,7 +147,7 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
 
       {/* 3. Animate the Button */}
       <motion.div 
-        className="mt-12 text-center sm:mt-16"
+        className="mt-12 text-center sm:mt-16 mb-12 sm:mb-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
