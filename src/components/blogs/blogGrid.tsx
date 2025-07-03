@@ -60,7 +60,7 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: false,
-    amount: 0.5,
+    amount: 0.2,
   });
 
   const containerVariants = {

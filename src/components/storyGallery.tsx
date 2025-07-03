@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { easeInOut, easeOut, motion, useInView } from "motion/react";
 import Image from "next/image";
+import { Pause } from "lucide-react";
 
 const topRowImages = [
   "/gallery/story-1.jpg",
@@ -20,7 +21,6 @@ const bottomRowImages = [
   "/gallery/story-10.jpg",
   "/gallery/story-11.jpg",
 ];
-
 
 const InfiniteScrollStyles = () => (
   <style jsx global>{`
@@ -46,9 +46,16 @@ const InfiniteScrollStyles = () => (
     .animate-scroll-right {
       animation: scroll-right 40s linear infinite;
     }
+    
+    /* Pause animation on hover */
+    .animate-scroll-left:hover {
+      animation-play-state: paused;
+    }
+    .animate-scroll-right:hover {
+      animation-play-state: paused;
+    }
   `}</style>
 );
-
 
 // --- Wavy Underline SVG Component ---
 const WavyUnderline = ({ isInView }: { isInView: boolean }) => (
@@ -69,13 +76,13 @@ const WavyUnderline = ({ isInView }: { isInView: boolean }) => (
       transition={{ duration: 0.8, delay: 0.2, ease: easeInOut}}
     />
   </svg>
-
 );
 
 // --- Main Gallery Section Component ---
 export function StoryGallerySection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.2 });
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -87,22 +94,48 @@ export function StoryGallerySection() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: easeOut } },
   };
 
-  const renderImageRow = (images: string[], animationClass: string) => (
+  const renderImageRow = (images: string[], animationClass: string, rowId: string) => (
     <div className="w-full overflow-hidden z-20">
       <div className={`flex w-max ${animationClass}`}>
-        {[...images, ...images].map((src, index) => (
-          <div key={index} className="flex-shrink-0 w-[80vw] sm:w-[80vw] md:w-[50vw] lg:w-[40vw] px-1">
-            <div className="relative aspect-[16/9] w-full h-full overflow-hidden rounded-xl">
-              <Image
-                src={src}
-                alt={`Interior design gallery image ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 20vw "
-              />
+        {[...images, ...images].map((src, index) => {
+          const cardId = `${rowId}-${index}`;
+          const isHovered = hoveredCard === cardId;
+          
+          return (
+            <div 
+              key={index} 
+              className="flex-shrink-0 w-[80vw] sm:w-[80vw] md:w-[50vw] lg:w-[40vw] px-1 relative group"
+              onMouseEnter={() => setHoveredCard(cardId)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              <div className="relative aspect-[16/9] w-full h-full overflow-hidden rounded-xl">
+                <Image
+                  src={src}
+                  alt={`Interior design gallery image ${index + 1}`}
+                  fill
+                  className="object-cover transition-all duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 20vw"
+                />
+                
+                {/* Overlay on hover */}
+                <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+                
+                {/* Pause Icon */}
+                {isHovered && (
+                  <motion.div
+                    className="absolute top-3 right-3 w-10 h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Pause className="w-5 h-5 text-white" />
+                  </motion.div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -136,9 +169,9 @@ export function StoryGallerySection() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col gap-2 ">
-        {renderImageRow(topRowImages, "animate-scroll-left")}
-        {renderImageRow(bottomRowImages, "animate-scroll-right")}
+      <div className="flex flex-col gap-2">
+        {renderImageRow(topRowImages, "animate-scroll-left", "top-row")}
+        {renderImageRow(bottomRowImages, "animate-scroll-right", "bottom-row")}
       </div>
     </section>
   );
