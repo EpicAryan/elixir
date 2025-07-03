@@ -74,11 +74,11 @@ export const PostCard = ({ post }: { post: PostCardProps }) => {
           />
         </div>
         <div className="flex flex-1 flex-col gap-2 ">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#F86642] font-gtpro md:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#F86642] font-gtpro md:text-sm mb-1">
             {post.category.title}
           </p>
           <AnimatedTitle title={post.title} />
-          <div className='text-gray-600 text-xs md:text-sm line-clamp-3'>{post.description}</div>
+          <div className='text-gray-600 text-xs md:text-sm line-clamp-3 my-2'>{post.description}</div>
           <div className="mt-auto flex items-center gap-x-3 text-xs md:text-sm text-gray-800 font-semibold justify-between">
             <time dateTime={post.publishedAt}>
               {format(new Date(post.publishedAt), 'MMM dd, yyyy')}

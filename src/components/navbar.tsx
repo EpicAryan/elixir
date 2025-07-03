@@ -9,9 +9,9 @@ import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#' },
-  { name: 'Projects', href: '#' },
-  { name: 'Why Us', href: '#' },
-  { name: 'About', href: '#' },
+  { name: 'Why Us', href: '#us' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'About', href: '/about' },
 ];
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -104,8 +104,8 @@ export function Navbar() {
             initial={{ y: '-100%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: '-100%', opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-white z-40 flex flex-col pt-20 sm:pt-24 px-4 sm:px-12 md:hidden"
+            transition={{ duration: 0.5 }}
+            className="container fixed inset-0 bg-white z-40 flex flex-col pt-20 sm:pt-24 px-6 sm:px-12 md:hidden"
           >
             {navLinks.map((link, index) => (
               <motion.div

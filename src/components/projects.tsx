@@ -3,7 +3,7 @@ import { Compare } from "@/components/ui/compare";
 
 export function Projects() {
   return (
-    <div className="w-full h-full container mx-auto px-6 lg:px-8 2xl:px-12 pt-10 font-gtpro">
+    <div id="projects" className="w-full h-full container mx-auto px-6 lg:px-8 2xl:px-12 pt-10 lg:pt-24 font-gtpro">
       {/* Title and Subtitle */}
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-neutral-900">

@@ -14,15 +14,15 @@ type ArchivePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publ
 
 const cardAnimationVariants = {
   fromLeft: {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { x: -20, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: easeOut } },
   },
   fadeIn: {
-    hidden: { opacity: 0, scale: 0.95 },
+    hidden: { opacity: 0, scale: 0.98 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeOut } },
   },
   fromRight: {
-    hidden: { x: 50, opacity: 0 },
+    hidden: { x: 20, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: easeOut } },
   },
 }
@@ -51,7 +51,7 @@ const fadeUpVariant = {
 
 export const BlogArchive = ({ posts }: { posts: ArchivePagePost[] }) => {
   return (
-    <section className="bg-white py-16 sm:py-24 mt-4">
+    <section className="bg-white py-16 sm:py-24 mt-4 overflow-x-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Animated Title */}
@@ -78,7 +78,7 @@ export const BlogArchive = ({ posts }: { posts: ArchivePagePost[] }) => {
 
         {/* Animated Grid */}
         <motion.div
-          className="mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-8 max-w-6xl"
+          className="mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8  max-w-xs sm:max-w-3xl lg:max-w-6xl"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -89,7 +89,7 @@ export const BlogArchive = ({ posts }: { posts: ArchivePagePost[] }) => {
             const finalVariants = cardAnimationVariants[variantKey as keyof typeof cardAnimationVariants];
 
             return (
-              <motion.div key={post._id} variants={finalVariants}>
+              <motion.div key={post._id} variants={finalVariants} className="w-full">
                 <PostCard post={post} />
               </motion.div>
             )

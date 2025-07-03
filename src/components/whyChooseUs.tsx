@@ -46,7 +46,7 @@ export function WhyChooseUs() {
   };
 
   return (
-    <section className="relative py-8 mb-8 bg-white min-h-full overflow-hidden">
+    <section id="us" className="relative pb-16 mb-8 bg-white min-h-full overflow-hidden pt-20 lg:pt-28">
       <div className="container mx-auto px-6 lg:px-8 2xl:px-12 relative z-10">
       {/* <div className=" px-6 md:px-16 xl:px-24 relative z-10"> */}
         <motion.div

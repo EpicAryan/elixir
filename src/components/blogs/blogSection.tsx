@@ -19,7 +19,7 @@ async function getFeaturedPosts() {
 export const BlogSection = async () => {
   const posts = await getFeaturedPosts()
   return (
-    <section className='pb-16 sm:pb-0 '>
+    <section className=' '>
       <BlogGrid posts={posts} />
     </section>
   )

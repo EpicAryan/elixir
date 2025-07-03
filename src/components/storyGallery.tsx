@@ -141,7 +141,7 @@ export function StoryGallerySection() {
   );
 
   return (
-    <section ref={sectionRef} className="bg-white pb-20 sm:py-28 overflow-hidden">
+    <section ref={sectionRef} className="bg-white pt-20 sm:pt-28 overflow-hidden">
       {/* Inject the custom animation styles into the page */}
       <InfiniteScrollStyles />
 

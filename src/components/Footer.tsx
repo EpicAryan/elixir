@@ -8,12 +8,12 @@ import {
   Mail,
   Phone,
   MapPin,
-  Twitter,
-  Dribbble,
-  Linkedin,
   LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { SiGooglemaps } from 'react-icons/si';
+
 
 const FooterLink = ({
   href,
@@ -186,9 +186,10 @@ export function Footer() {
             <Link href="#" className="text-xs hover:text-white transition-colors">Terms & Conditions</Link>
             <Link href="#" className="text-xs hover:text-white transition-colors">Privacy Policy</Link>
             <div className="flex gap-3">
-              <motion.a href="#" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><Twitter size={16} /></motion.a>
-              <motion.a href="#" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><Dribbble size={16} /></motion.a>
-              <motion.a href="#" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><Linkedin size={16} /></motion.a>
+              <motion.a  href="https://www.linkedin.com/in/yourprofile" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><FaLinkedin  size={16} /></motion.a>
+              <motion.a  href="https://www.instagram.com/yourprofile" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><FaInstagram  size={16} /></motion.a>
+              <motion.a href="https://wa.me/919999999999" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><FaWhatsapp  size={16} /></motion.a>
+              <motion.a  href="https://maps.google.com/?q=Your+Location+Here" whileHover={{ scale: 1.2, color: '#fff' }} whileTap={{ scale: 0.9 }}><SiGooglemaps   size={16} /></motion.a>
             </div>
           </div>
         </div>
