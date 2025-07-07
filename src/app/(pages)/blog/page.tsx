@@ -38,7 +38,7 @@ type ArchivePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publ
   category: { title: string; slug?: { current: string }; color?: string }
 }
 
-export async function getPaginatedPosts({ limit, pageIndex = 0 }: { limit: number; pageIndex?: number }): Promise<ArchivePagePost[]> {
+async function getPaginatedPosts({ limit, pageIndex = 0 }: { limit: number; pageIndex?: number }): Promise<ArchivePagePost[]> {
   if (client) {
     return (
       (await client.fetch(paginatedPostsQuery, {
@@ -50,9 +50,9 @@ export async function getPaginatedPosts({ limit, pageIndex = 0 }: { limit: numbe
   return [];
 }
 
-export default async function BlogArchivePage({ searchParams }: { searchParams: { page?: string } }) {
-  // Move data fetching to server component
-  const page: string = searchParams.page || "1";
+export default async function BlogArchivePage({ searchParams }: { searchParams: Promise<{ page?: string }>}) {
+  const searchParamsResolved = await searchParams;
+  const page = searchParamsResolved.page || "1";
   const pageIndex = parseInt(page, 10) || 1;
   const POSTS_PER_PAGE = 6;
 
@@ -77,7 +77,7 @@ export default async function BlogArchivePage({ searchParams }: { searchParams: 
           </p>
         </div>
         <Suspense
-          key={searchParams.page || "1"}
+          key={searchParamsResolved.page || "1"}
           fallback={<div className="flex h-40 items-center justify-center"><span className="text-lg text-gray-500">Loading...</span></div>}>
           <BlogArchive 
             posts={posts} 
