@@ -9,6 +9,7 @@ export function InfiniteMovingCardsDemo() {
         items={partners}
         direction="left"
         speed="fast"
+        pauseOnHover={false}
       />
     </div>
   );

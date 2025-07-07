@@ -1,8 +1,8 @@
 import { groq } from 'next-sanity'
 
-// Query for the blog index page (gets the first 6 posts)
+// Query for the blog index page (gets the first 8 posts)
 export const postsQuery = groq`
-*[_type == "post"] | order(publishedAt desc) [0...6] {
+*[_type == "post"] | order(publishedAt desc) [0...8] {
   _id,
   title,
   description,
@@ -46,3 +46,16 @@ export const allPostsQuery = groq`
   "author": author->{name, image},
   "category": categories[0]->{title}
 }`
+
+export const paginatedPostsQuery = groq`
+*[_type == "post"] | order(publishedAt desc, _createdAt desc) [$pageIndex...$limit] {
+  _id,
+  title,
+  slug,
+  mainImage,
+  description,
+  readingTime,
+  publishedAt,
+  "author": author->{name, image, slug},
+  "category": categories[0]->{title, slug, color}
+}`;

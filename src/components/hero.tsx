@@ -273,16 +273,13 @@ const Hero = () => {
   return (
     <section className="relative pt-8 min-h-screen">
       <div className="pt-10 md:pt-16 pb-20 md:pb-24 container mx-auto px-6 lg:px-8 2xl:px-12">
-        {/* **Outer container for overflow elements** */}
         <div className="relative">
-          {/* **Main image container with rounded corners and overflow hidden** */}
           <motion.div 
             className="relative h-[70vh] rounded-4xl sm:rounded-3xl overflow-hidden"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            {/* **Background Image with proper clipping** */}
             <Image
               src="/hero-1.png"
               alt="Modern living room"
@@ -292,8 +289,8 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-black/20 sm:bg-black/10 rounded-4xl sm:rounded-3xl" />
 
-            {/* **Mobile View Elements - Positioned inside the rounded container** */}
-            {/* Mobile Top Rating Card */}
+            {/* **Mobile View Elements** */}
+
             <motion.div
               className="md:hidden absolute top-[15%] left-1/2 transform -translate-x-1/2 z-20"
               variants={itemVariants2}
@@ -375,7 +372,7 @@ const Hero = () => {
               </div>
             </motion.div>
 
-          {/* **Desktop Top Left Rating Card - Positioned outside the image container** */}
+          {/* **Desktop Top Left Rating Card ** */}
           <motion.div
             className="hidden md:block absolute top-[calc(12%+2.5rem)] -left-[2rem] z-30"
             variants={itemVariants2}
@@ -395,7 +392,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* **Bottom Section - Positioned relative to main container** */}
+        {/* **Bottom Section ** */}
         <div className='flex gap-1'>
           {/* Desktop Bottom Left Card */}
           <motion.div 
@@ -422,7 +419,7 @@ const Hero = () => {
             viewport={{ once: true }}
           >
             <h4 className="ml-4 md:text-xs xl:text-base 2xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] 2xl:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
-            <div className="relative w-full overflow-hidden">
+            <div className="relative w-full overflow-hidden  mask-fade-x">
               <InfiniteMovingCardsDemo/>
             </div>
           </motion.div>

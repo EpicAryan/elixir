@@ -63,7 +63,7 @@ export const InfiniteMovingCards = ({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "10s");
+        containerRef.current.style.setProperty("--animation-duration", "20s");
       } else if (speed === "normal") {
         containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
@@ -75,14 +75,14 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden ",
+        "relative z-20 max-w-7xl overflow-hidden ",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 ",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4  ",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}

@@ -137,20 +137,21 @@
   }
 }
 
-.scroller {
-  /* This creates the fade effect on the left and right sides */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    white 800px,
-    white calc(100% - 500px),
-    transparent
-  );
+.mask-fade-x {
   mask-image: linear-gradient(
     to right,
-    transparent,
-    white 800px,
-    white calc(100% - 500px),
-    transparent
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
   );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
 }
