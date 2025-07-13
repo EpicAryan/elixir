@@ -1,18 +1,24 @@
+'use client'
+
 import { Footer, Navbar } from "@/components";
 import { WhatsAppFloat } from "@/components/ui-components/whatsAppFloat";
-
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+   const pathname = usePathname();
+   const hideLayoutRoutes = ["/calculator"];
+
+  const shouldHideLayout = hideLayoutRoutes.includes(pathname);
   return (
     <html lang="en">
       <body>
-        <Navbar/>
+         {!shouldHideLayout && <Navbar />}
         {children}
-        <Footer/>
+        {!shouldHideLayout && <Footer />}
          <WhatsAppFloat 
           phoneNumber="1234567890" 
           message="Hi! I'm interested in your services and would like to know more."

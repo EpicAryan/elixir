@@ -155,3 +155,51 @@
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
+
+
+.scrollbar-hide {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+.PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.PhoneInputCountrySelect {
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+[data-sonner-toast] [data-description] {
+  color: #374151 !important; 
+  opacity: 1 !important;
+}
