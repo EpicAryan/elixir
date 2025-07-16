@@ -25,7 +25,7 @@ export default function ContactFormStep({ formData, setFormData }: ContactFormSt
 
   return (
     <div className="max-w-sm mx-auto text-center mt-4">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6 font-gtpro">
+      <h2 className="text-sm sm:text-xl font-semibold text-gray-900 mb-6 font-gtpro">
         Your estimate is almost ready
       </h2>
 
@@ -58,7 +58,7 @@ export default function ContactFormStep({ formData, setFormData }: ContactFormSt
             onChange={(e) => updateContactInfo('subscribeWhatsapp', e.target.checked)}
           />
 
-          <label htmlFor="whatsapp" className="text-gray-700">
+          <label htmlFor="whatsapp" className="text-xs sm:text-base text-gray-700">
             Send me updates on WhatsApp
           </label>
         </div>

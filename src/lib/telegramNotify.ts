@@ -1,14 +1,17 @@
+import { calculatePrice } from '@/utils/priceCalculator';
 import { FormData } from '../types/stepper';
 
 export async function sendTelegramNotification(
   formData: FormData
-): Promise<boolean> {
+): Promise<{success: boolean, totalPrice: number}> {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId   = process.env.TELEGRAM_CHAT_ID;
 
+  const totalPrice = calculatePrice(formData);
+
   if (!botToken || !chatId) {
     console.error('Telegram env vars missing');
-    return false;
+    return { success: false, totalPrice };
   }
 
   const text = `
@@ -26,6 +29,8 @@ export async function sendTelegramNotification(
 • Dining: ${formData.rooms.dining}
 
 *Package:* ${formData.package}
+
+*Total Price:* ₹${totalPrice.toLocaleString('en-IN')}
 
 *Contact Information:*
 • Name: ${formData.contactInfo.name}
@@ -47,9 +52,9 @@ export async function sendTelegramNotification(
       }
     );
     if (!res.ok) console.error('Telegram API error', await res.text());
-    return res.ok;
+    return { success: res.ok, totalPrice };
   } catch (e) {
     console.error('Telegram network error', e);
-    return false;
+    return { success: false, totalPrice };
   }
 }

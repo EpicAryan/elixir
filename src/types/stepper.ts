@@ -1,4 +1,6 @@
 // types/stepper.ts
+
+export type PackageType = 'Basic' | 'Premium' | 'Ultra Premium'
 export interface FormData {
   bhkType: string;
   bhkSizes: { [key: string]: 'small' | 'large' };
@@ -9,7 +11,7 @@ export interface FormData {
     bathroom: number;
     dining: number;
   };
-  package: 'essentials' | 'premium' | 'luxury';
+  package: PackageType;
   contactInfo: {
     name: string;
     email: string;

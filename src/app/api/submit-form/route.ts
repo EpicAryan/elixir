@@ -1,26 +1,30 @@
 
 
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { appendToGoogleSheet } from '../../../lib/googleSheets';
 import { sendTelegramNotification } from '../../../lib/telegramNotify';
+import { calculatePrice } from '@/utils/priceCalculator';
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.json();
-    
-    const sheetSuccess = await appendToGoogleSheet(formData);
-    const telegramSuccess = await sendTelegramNotification(formData);
-    
-    if (sheetSuccess && telegramSuccess) {
-      return Response.json({ message: 'success' });
-    }
+    const totalPrice = calculatePrice(formData);
+    await appendToGoogleSheet(formData);
+    await sendTelegramNotification(formData);
 
-    return Response.json(
-      { message: 'partial', sheetSuccess, telegramSuccess },
-      { status: 207 }
-    );
+     return NextResponse.json({ 
+      success: true, 
+      message: 'Form submitted successfully',
+      totalPrice
+    });
   } catch (e) {
     console.error(e);
-    return Response.json({ message: 'server error' }, { status: 500 });
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'An error occurred while processing your request' 
+      }, 
+      { status: 500 }
+    );
   }
 }

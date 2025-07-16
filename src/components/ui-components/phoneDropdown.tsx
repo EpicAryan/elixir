@@ -91,7 +91,7 @@ export default function PhoneDropdown({ value, onChange }: Props) {
     <div className="w-full relative" ref={dropdownRef} onKeyDown={handleKeyDown}>
 
     <div
-        className={`flex items-center rounded-lg px-3 py-3.5 bg-white transition-all duration-200 border
+        className={`flex items-center rounded-lg px-3 py-2 sm:py-3.5 bg-white transition-all duration-200 border
             ${isValid || !value ? 'border-gray-300' : 'border-red-500 border'}
         `}
     >
@@ -124,7 +124,7 @@ export default function PhoneDropdown({ value, onChange }: Props) {
 
           {/* Dropdown */}
           {isOpen && (
-            <div className="absolute z-20 mt-1 bg-white border shadow-lg w-72 max-h-64 overflow-y-auto rounded-lg text-left">
+            <div className="absolute z-20 mt-1 bg-white border shadow-lg w-72 max-h-52 sm:max-h-64 overflow-y-auto rounded-lg text-left">
               <input
                 type="text"
                 placeholder="Search countries..."

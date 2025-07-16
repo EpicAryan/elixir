@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import { FormData } from '../types/stepper';
+import { calculatePrice } from '@/utils/priceCalculator';
 
 const auth = new google.auth.GoogleAuth({
   credentials: {
@@ -13,7 +14,8 @@ export const appendToGoogleSheet = async (formData: FormData) => {
   try {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEETS_SHEET_ID;
-    
+    const totalPrice = calculatePrice(formData);
+
     await sheets.spreadsheets.get({ spreadsheetId });
     const rowData = [
       new Date().toLocaleString('en-IN'),
@@ -25,6 +27,7 @@ export const appendToGoogleSheet = async (formData: FormData) => {
       formData.rooms.bathroom,
       formData.rooms.dining,
       formData.package,
+      totalPrice,
       formData.contactInfo.name,
       formData.contactInfo.email,
       formData.contactInfo.phone,
@@ -34,19 +37,19 @@ export const appendToGoogleSheet = async (formData: FormData) => {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'A1:N1',
+      range: 'A1:O1',
     });
     
     if (!response.data.values || response.data.values.length === 0) {
       const headers = [
         'Timestamp', 'BHK Type', 'BHK Size', 'Living Room', 'Kitchen', 
-        'Bedroom', 'Bathroom', 'Dining', 'Package', 'Name', 'Email', 
+        'Bedroom', 'Bathroom', 'Dining', 'Package', 'Total Price', 'Name', 'Email', 
         'Phone', 'Property Name', 'WhatsApp Updates'
       ];
       
       await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: 'A1:N1',
+        range: 'A1:O1',
         valueInputOption: 'RAW',
         requestBody: {
           values: [headers]
@@ -58,7 +61,7 @@ export const appendToGoogleSheet = async (formData: FormData) => {
     
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'A:N',
+      range: 'A:O',
       valueInputOption: 'RAW',
       requestBody: {
         values: [rowData]

@@ -20,7 +20,7 @@ interface StepperProps {
     children: React.ReactNode;
     initialStep?: number;
     onStepChange?: (step: number) => void;
-    onFinalStepCompleted?: (data: FormData) => void;
+    onFinalStepCompleted?: (data: FormData) =>  Promise<{ totalPrice: number }>;
     formData: FormData;
     setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
@@ -30,7 +30,7 @@ export default function InteriorDesignStepper({
     children,
     initialStep = 1,
     onStepChange = () => {},
-    onFinalStepCompleted = () => {},
+    onFinalStepCompleted = () =>  Promise.resolve({ totalPrice: 0 }),
     formData,
     setFormData
 }: StepperProps) {
@@ -38,6 +38,8 @@ export default function InteriorDesignStepper({
     const [direction, setDirection] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
+    const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null);
+
     const stepsArray = Children.toArray(children);
     const totalSteps = stepsArray.length;
     const isLastStep = currentStep === totalSteps;
@@ -84,7 +86,8 @@ export default function InteriorDesignStepper({
         if (!isNextDisabled(currentStep, formData)) {
             setIsSubmitting(true);
             try {
-                await onFinalStepCompleted(formData);
+                const result = await onFinalStepCompleted(formData);
+                setCalculatedPrice(result.totalPrice);
                 setIsCompleted(true);
             } catch (error) {
                 console.error('Submission error:', error);
@@ -97,10 +100,12 @@ export default function InteriorDesignStepper({
     const handleBackToStepOne = () => {
         setCurrentStep(1);
         setIsCompleted(false);
+        setCalculatedPrice(null);
         setDirection(-1);
         setFormData({
             bhkType: '',
             bhkSizes: {
+                '1': 'small',
                 '2': 'small',
                 '3': 'small',
                 '4': 'small'
@@ -112,7 +117,7 @@ export default function InteriorDesignStepper({
                 bathroom: 1,
                 dining: 1
             },
-            package: "essentials",
+            package: "Basic",
             contactInfo: {
                 name: '',
                 email: '',
@@ -214,25 +219,38 @@ export default function InteriorDesignStepper({
                             direction={direction}
                             className="h-full"
                         >
-                            <div className="p-8">
+                            <div className="p-4 sm:p-8">
                                 {isCompleted ? (
-                                    <div className="text-center py-12">
-                                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="text-center sm:py-12">
+                                        <div className="size-10 sm:size-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <svg className="size-6 sm:size-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
-                                        <p className="text-gray-600 mb-8">Your form has been submitted successfully.</p>
+                                        <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
+                                        <p className="text-sm sm:text-base text-gray-600 mb-8">Your form has been submitted successfully.</p>
+                                        
+
+                                        {calculatedPrice !== null && (
+                                            <div className="mb-8 p-6 border border-green-200 bg-green-50 rounded-lg">
+                                                <h3 className="text-lg sm:text-xl font-bold text-green-700 mb-2">Your Estimate</h3>
+                                                <p className="text-xl sm:text-3xl font-bold text-green-800 mb-2">
+                                                    ₹{calculatedPrice.toLocaleString('en-IN')}
+                                                </p>
+                                                <p className="text-sm text-green-600">
+                                                    Our team will contact you shortly to discuss your project.
+                                                </p>
+                                            </div>
+                                        )}
                                         
                                         {/* Navigation Buttons */}
-                                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                        <div className="flex flex-row gap-4 justify-center items-center">
                                             <Button
                                                 onClick={handleBackToStepOne}
                                                 variant="outline"
-                                                className="px-8 py-3 text-gray-600 hover:text-gray-800 font-semibold border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                                                className="text-xs sm:text-base px-8 py-3 text-gray-600 hover:text-gray-800 font-semibold border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
                                             >
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg className="size-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                                 </svg>
                                                 Start New Form
@@ -240,9 +258,9 @@ export default function InteriorDesignStepper({
                                             
                                             <Button
                                                 onClick={handleGoToHome}
-                                                className="px-8 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors"
+                                                className="text-xs sm:text-base px-8 py-3 bg-[#F86642] hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
                                             >
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg className="size-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                                 </svg>
                                                 Go to Home
@@ -259,14 +277,14 @@ export default function InteriorDesignStepper({
 
                     {/* Bottom Navigation */}
                     {!isCompleted && (
-                        <footer className="border-t border-gray-200 px-6 py-6">
+                        <footer className="border-t border-gray-200 px-3 py-3 sm:px-6 sm:py-6">
                             <div className="flex justify-between items-center">
                                 {currentStep !== 1 ? (
                                     <Button
                                         variant="outline"
                                         onClick={handleBack}
                                         disabled={isSubmitting}
-                                        className="px-8 py-3 text-gray-600 hover:text-gray-800 font-semibold border-2 border-gray-300 rounded-lg"
+                                        className="text-xs sm:text-base px-6 sm:px-8 py-3 text-gray-600 hover:text-gray-800 font-semibold border-2 border-gray-300 rounded-lg"
                                     >
                                         BACK
                                     </Button>
@@ -277,10 +295,10 @@ export default function InteriorDesignStepper({
                                 <Button
                                     onClick={isLastStep ? handleComplete : handleNext}
                                     disabled={isNextDisabled(currentStep, formData) || isSubmitting}
-                                    className={`px-8 py-3 font-semibold rounded-xl transition-all duration-200 ${
+                                    className={`text-xs sm:text-base px-6 sm:px-8 py-3 font-semibold rounded-xl transition-all duration-200 cursor-pointer ${
                                         isNextDisabled(currentStep, formData) || isSubmitting
-                                            ? 'bg-red-400 cursor-not-allowed text-gray-200'
-                                            : 'bg-red-500 hover:bg-red-600 text-white'
+                                            ? 'bg-orange-500 cursor-not-allowed text-gray-200'
+                                            : 'bg-[#F86642] hover:bg-orange-600 text-white'
                                     }`}
                                 >
                                     {isSubmitting ? "SUBMITTING..." : (isLastStep ? "SUBMIT" : "NEXT")}

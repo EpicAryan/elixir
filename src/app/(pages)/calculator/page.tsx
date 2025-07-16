@@ -13,6 +13,7 @@ export default function InteriorCalculator() {
     const [formData, setFormData] = useState<FormData>({
         bhkType: '',
         bhkSizes: {
+            '1': 'small',
             '2': 'small',
             '3': 'small',
             '4': 'small'
@@ -24,7 +25,7 @@ export default function InteriorCalculator() {
             bathroom: 1,
             dining: 1
         },
-        package: 'essentials',
+        package: 'Basic',
         contactInfo: {
             name: '',
             email: '',
@@ -33,32 +34,39 @@ export default function InteriorCalculator() {
             propertyName: '',
             subscribeWhatsapp: false
         }
-        });
+    });
 
-        const handleFinalStepCompleted = async (data: FormData) => {
-          try {
+    const handleFinalStepCompleted = async (data: FormData): Promise<{ totalPrice: number }> => {
+        try {
             const response = await fetch('/api/submit-form', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
             });
             
             if (response.ok) {
+                const result = await response.json();
+                
                 toast.success("Form submitted successfully!", {
-                  description: "Thank you for your submission. We'll get back to you soon.",
-                  duration: 5000,
+                    description: `Your estimated cost is ₹${result.totalPrice.toLocaleString('en-IN')}. We'll get back to you soon.`,
+                    duration: 5000,
                 });
+                
+                return { totalPrice: result.totalPrice };
+            } else {
+                throw new Error('Failed to submit form');
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Error:', error);
             toast.error("There was an error submitting the form", {
-              description: "Please check your connection and try again.",
-              duration: 5000,
+                description: "Please check your connection and try again.",
+                duration: 5000,
             });
-          } 
-        };
+            throw error;
+        } 
+    };
 
     return (
         <InteriorDesignStepper
