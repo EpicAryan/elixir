@@ -131,72 +131,9 @@ export default function InteriorDesignStepper({
     return (
         <div className="flex flex-col h-screen w-full bg-gray-200">
             {/* Top Navbar */}
-            {/* <header className="bg-white px-4 sm:px-10 py-4 shadow-[0_4px_10px_rgba(0,0,0,0.08)] border-b border-gray-200/80">
-                <div className="flex items-center justify-between mx-auto">
-                    <div className="flex items-center">
-                        <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} className="cursor-pointer">
-                            <Link href="/" className="flex items-center gap-2">
-                                <Image 
-                                    src="/logo.svg" 
-                                    alt="Elixir Logo" 
-                                    width={32} 
-                                    height={32} 
-                                    className="w-7 h-7 sm:w-8 sm:h-8"
-                                />
-                                <span className="text-xl sm:text-2xl font-semibold text-slate-800 font-gtpro uppercase tracking-wide">
-                                    Elixir
-                                </span>
-                            </Link>
-                        </motion.div>
-                    </div>
-
-                    <div className="flex-1 mx-12 max-w-6xl">
-                        <Stepper value={currentStep}>
-                            {stepsArray.map((_, index) => {
-                                const step = index + 1;
-                                const isLast = step === stepsArray.length;
-
-                                return (
-                                    <StepperItem
-                                        key={step}
-                                        step={step}
-                                        className="relative flex-1 flex-col!"
-                                    >
-                                        <StepperTrigger className="flex flex-col items-center gap-1">
-                                            <StepperIndicator />
-                                            <StepperTitle
-                                                className={`text-xs font-medium transition-colors duration-300 ${
-                                                    currentStep === step
-                                                        ? "text-gray-800"
-                                                        : currentStep > step
-                                                        ? "text-gray-700"
-                                                        : "text-gray-400"
-                                                }`}
-                                            >
-                                                {stepLabels[index]}
-                                            </StepperTitle>
-                                        </StepperTrigger>
-
-                                        {!isLast && (
-                                            <StepperSeparator className="absolute inset-x-0 top-3 left-[calc(50%+0.75rem+0.125rem)] -order-1 m-0 -translate-y-1/2 group-data-[orientation=horizontal]/stepper:w-[calc(100%-1.5rem-0.25rem)] group-data-[orientation=horizontal]/stepper:flex-none" />
-                                        )}
-                                    </StepperItem>
-                                );
-                            })}
-                        </Stepper>
-                    </div>
-
-                    <div className="flex items-center text-lg font-semibold">
-                        <span className="text-red-500">{currentStep}</span>
-                        <span className="text-gray-400 mx-1">/</span>
-                        <span className="text-gray-600">{totalSteps}</span>
-                    </div>
-                </div>
-            </header>  */}
             <header className="bg-white px-4 sm:px-10 py-4 shadow-[0_4px_10px_rgba(0,0,0,0.08)] border-b border-gray-200/80">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mx-auto gap-4">
                     
-                    {/* Top Row: Logo and Step Counter (in a flex row on sm+) */}
                     <div className="flex items-center justify-between w-full sm:w-auto">
                         {/* Logo */}
                         <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} className="cursor-pointer">
