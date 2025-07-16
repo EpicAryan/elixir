@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 const GradientText = ({ children }: { children: React.ReactNode }) => (
-  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-3xl sm:text-4xl xl:text-5xl font-semibold text-transparent">
+  <span className="bg-gradient-to-br from-[#F2672D] to-[#F99A72] bg-clip-text font-manrope text-xl sm:text-3xl xl:text-5xl font-semibold text-transparent">
     {children}
   </span>
 );
@@ -91,57 +91,57 @@ export function WhyChooseUs() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-6 min-h-[680px]"
+          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-4 sm:gap-6 min-h-[680px]"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
         >
           {/* Card 1 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromLeft} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromLeft} className="bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8">
             <h3><GradientText>10 years</GradientText></h3>
-            <p className="text-gray-600 mt-2 font-gtpro text-base lg:text-xl">flat warranty¹</p>
+            <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">flat warranty¹</p>
           </motion.div>
 
           {/* Reordered Card 4 & 5 for mobile */}
-          <div className="flex flex-col gap-6 md:hidden">
+          <div className="flex flex-col gap-4 sm:gap-6 md:hidden">
             {/* Card 4 - Mobile */}
             <motion.div
               {...hoverEffect}
               variants={itemVariants.fromRight}
-              className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8"
+              className="bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8"
             >
               <h3><GradientText>45-days</GradientText></h3>
-              <p className="text-gray-600 mt-2 font-gtpro text-xl">move-in guaranty¹</p>
+              <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base ">move-in guaranty¹</p>
             </motion.div>
 
             {/* Card 5 - Mobile */}
             <motion.div
               {...hoverEffect}
               variants={itemVariants.fromRight}
-              className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8"
+              className="bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8"
             >
               <h3><GradientText>146+</GradientText></h3>
-              <p className="text-gray-600 mt-2 font-gtpro text-xl">Quality checks</p>
+              <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base ">Quality checks</p>
             </motion.div>
           </div>
 
 
 
           {/* Card 2 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fadeIn} className="relative bg-neutral-50 rounded-xl p-6 md:col-span-2 md:row-span-2 overflow-hidden border border-[#F2672D]/8 h-[270px] sm:h-[340px] md:h-auto">
+          <motion.div {...hoverEffect} variants={itemVariants.fadeIn} className="relative bg-neutral-50 rounded-xl p-4 sm:p-6 md:col-span-2 md:row-span-2 overflow-hidden border border-[#F2672D]/8 h-[270px] sm:h-[340px] md:h-auto">
             <div className="relative z-10">
               <h3><GradientText>20,00,000+</GradientText></h3>
-              <p className="text-gray-600 mt-2 font-gtpro text-xl">catalogue products</p>
+              <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">catalogue products</p>
             </div>
             <Image src="/whyus/box.svg" alt="Drawer unit" width={400} height={300} className="absolute -bottom-4 -right-4 w-full h-auto xl:max-w-[75%] z-0" />
           </motion.div>
 
           {/* Card 3 */}
           <motion.div {...hoverEffect} variants={itemVariants.fromLeft} className="bg-neutral-50 rounded-xl md:row-span-2 flex flex-col justify-between border border-[#F2672D]/8">
-            <div className="px-6 pt-6">
+            <div className="px-4 sm:px-6 pt-4 sm:pt-6">
               <h3><GradientText>#1 Interiors</GradientText></h3>
-              <p className="text-gray-600 mt-2 font-gtpro text-xl">in Chennai</p>
+              <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">in Chennai</p>
             </div>
             <div className="relative w-full h-50">
               <Image src="/whyus/chennaiArt.svg" alt="Chennai skyline" fill className="object-cover" />
@@ -149,28 +149,28 @@ export function WhyChooseUs() {
           </motion.div>
 
           {/* Card 4 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8">
             <h3><GradientText>45-days</GradientText></h3>
-            <p className="text-gray-600 mt-2 font-gtpro text-xl">move-in guaranty¹</p>
+            <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">move-in guaranty¹</p>
           </motion.div>
 
           {/* Card 5 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromRight} className="hidden md:block bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8">
             <h3><GradientText>146+</GradientText></h3>
-            <p className="text-gray-600 mt-2 font-gtpro text-xl">Quality checks</p>
+            <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">Quality checks</p>
           </motion.div>
 
           {/* Card 6 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="bg-neutral-50 rounded-xl p-6 border border-[#F2672D]/8">
+          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="bg-neutral-50 rounded-xl p-4 sm:p-6 border border-[#F2672D]/8">
             <h3><GradientText>10+ Awards</GradientText></h3>
-            <p className="text-gray-600 mt-2 font-gtpro text-xl">for Innovative Designs</p>
+            <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">for Innovative Designs</p>
           </motion.div>
 
           {/* Card 7 */}
-          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="relative bg-neutral-50 rounded-xl p-6 overflow-hidden border border-[#F2672D]/10 md:col-span-2 flex items-center justify-between">
+          <motion.div {...hoverEffect} variants={itemVariants.fromBottom} className="relative bg-neutral-50 rounded-xl p-4 sm:p-6 overflow-hidden border border-[#F2672D]/10 md:col-span-2 flex items-center justify-between">
             <div className="relative z-10">
               <h3><GradientText>12+ Years</GradientText></h3>
-              <p className="text-gray-600 mt-2 font-gtpro text-xl">of legacy</p>
+              <p className="text-gray-600 mt-2 font-gtpro text-sm sm:text-base lg:text-xl">of legacy</p>
             </div>
              <div className="absolute inset-y-0 right-0 w-1/2 z-0">
               <Image

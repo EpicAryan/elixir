@@ -29,7 +29,7 @@ export function Projects() {
             autoplay={false}
             enableViewAnimation={true}
             viewAnimationDuration={3000}
-            animationEndPercentage={65}
+            animationEndPercentage={35}
           />
         </div>
 

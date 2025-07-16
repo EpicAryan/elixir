@@ -3,24 +3,25 @@
 import React, { useRef, useState } from "react";
 import { easeInOut, easeOut, motion, useInView } from "motion/react";
 import Image from "next/image";
-import { Pause } from "lucide-react";
+import { Armchair } from "lucide-react";
 
 const topRowImages = [
-  "/gallery/story-1.jpg",
-  "/gallery/story-2.png",
-  "/gallery/story-3.png",
-  "/gallery/story-4.png",
-  "/gallery/story-5.png",
-  "/gallery/story-6.png",
+  { src: "/gallery/story-1.jpg", label: "Luxurious Modern Living" },
+  { src: "/gallery/story-2.png", label: "Chic Dining Area" },
+  { src: "/gallery/story-3.png", label: "Vibrant Living Space" },
+  { src: "/gallery/story-4.png", label: "Elegant Tufted Bedroom" },
+  { src: "/gallery/story-5.png", label: "Louvered Wardrobe Design" },
+  { src: "/gallery/story-6.png", label: "Sleek Modular Kitchen" },
 ];
 
 const bottomRowImages = [
-  "/gallery/story-7.png",
-  "/gallery/story-8.jpg",
-  "/gallery/story-9.jpg",
-  "/gallery/story-10.jpg",
-  "/gallery/story-11.jpg",
+  { src: "/gallery/story-7.png", label: "Art Deco Inspired Bedroom" },
+  { src: "/gallery/story-8.jpg", label: "Contemporary Accent Wall" },
+  { src: "/gallery/story-9.jpg", label: "Colorful & Eclectic Living" },
+  { src: "/gallery/story-10.jpg", label: "Geometric Bedroom Design" },
+  { src: "/gallery/story-11.jpg", label: "Serene Vanity Nook" },
 ];
+
 
 const InfiniteScrollStyles = () => (
   <style jsx global>{`
@@ -94,10 +95,10 @@ export function StoryGallerySection() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: easeOut } },
   };
 
-  const renderImageRow = (images: string[], animationClass: string, rowId: string) => (
+  const renderImageRow = (images: { src: string; label: string }[], animationClass: string, rowId: string) => (
     <div className="w-full overflow-hidden z-20">
       <div className={`flex w-max ${animationClass}`}>
-        {[...images, ...images].map((src, index) => {
+        {[...images, ...images].map((img, index) => {
           const cardId = `${rowId}-${index}`;
           const isHovered = hoveredCard === cardId;
           
@@ -110,7 +111,7 @@ export function StoryGallerySection() {
             >
               <div className="relative aspect-[16/9] w-full h-full overflow-hidden rounded-xl">
                 <Image
-                  src={src}
+                  src={img.src}
                   alt={`Interior design gallery image ${index + 1}`}
                   fill
                   className="object-cover transition-all duration-300 group-hover:scale-105"
@@ -129,9 +130,20 @@ export function StoryGallerySection() {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Pause className="w-5 h-5 text-white" />
+                    <Armchair className="w-5 h-5 text-white" />
                   </motion.div>
                 )}
+                {isHovered && (
+                <motion.div
+                  className="absolute bottom-3 left-3 bg-black/50 text-white text-xs px-3 py-2 rounded-full shadow"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {img.label}
+                </motion.div>
+              )}
               </div>
             </div>
           );
@@ -141,7 +153,7 @@ export function StoryGallerySection() {
   );
 
   return (
-    <section ref={sectionRef} className="bg-white pt-20 sm:pt-28 overflow-hidden">
+    <section ref={sectionRef} className="bg-white pt-12 md:pt-20 lg:pt-28 overflow-hidden">
       {/* Inject the custom animation styles into the page */}
       <InfiniteScrollStyles />
 

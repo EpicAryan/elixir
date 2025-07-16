@@ -7,7 +7,7 @@ import { BuiltToLast } from "@/components";
 import { HappyHomes } from "@/components";
 // import { StayInTheKnow } from "@/components";
 import { BlogSection } from "@/components/blogs/blogSection";
-import Image from "next/image";
+// import Image from "next/image";
 
 export const revalidate = 60
 
@@ -19,13 +19,13 @@ export default function Home() {
       <StoryGallerySection />
 
       <div className="relative">
-        <Image
+        {/* <Image
           src="/bg-design.png"
           alt="Design Decoration"
-          width={600}
-          height={500}
+          width={800}
+          height={800}
           className="absolute -top-24 sm:-top-32 md:-top-40 right-0 z-10 w-[150px] sm:w-[200px] md:w-[250px] lg:w-[350px] xl:w-[550px] pointer-events-none"
-        />
+        /> */}
         <WhyChooseUs />
       </div>
 

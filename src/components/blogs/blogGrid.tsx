@@ -176,9 +176,9 @@ import { easeOut, motion, useInView } from 'framer-motion'
 import { PostCard } from './postCard'
 import type { Post } from '../../../@types/content'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import Link from 'next/link'
 import { Button } from '../ui/button'
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 export type HomePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publishedAt' | 'readingTime'> & {
   author: { name: string; image?: SanityImageSource; slug?: { current: string } }
@@ -226,10 +226,11 @@ const fadeUpVariant = {
 }
 
 export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
+  const router = useRouter();
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: false,
-    amount: 0.2,
+    amount: 0.01,
   });
 
   const containerVariants = {
@@ -253,7 +254,7 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
 
   return (
     <div ref={ref} className="w-full overflow-x-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mb-16 md:mb-24 xl:mb-32 max-w-5xl">
+      <div className="container mx-auto px-6 lg:px-8 2xl:px-12 mb-16 md:mb-24 xl:mb-32 max-w-5xl">
         <motion.div
           className=""
           variants={containerVariants}
@@ -298,7 +299,7 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
 
         {/* First 2 posts in landscape format */}
         <motion.div
-          className="grid gap-10 md:grid-cols-2 lg:gap-10 mt-8 sm:mt-16"
+          className="grid gap-10 sm:grid-cols-2 lg:gap-10 mt-8 sm:mt-16"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -317,17 +318,19 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
         {/* Remaining posts in square format */}
         {posts.length > 2 && (
           <motion.div
-            className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3"
+            className="mt-10 grid gap-10 lg:gap-10 sm:grid-cols-3"
             variants={gridContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ amount: 0.1 }}
           >
-            {posts.slice(2, 8).map((post, index) => {
+            {posts.slice(2, 5).map((post, index) => {
               const adjustedIndex = index + 2; 
               const variantKey = ['fromLeft', 'fadeIn', 'fromRight'][index % 3];
               const finalVariants = adjustedIndex >= 5 ? cardAnimationVariants.fromBottom : cardAnimationVariants[variantKey as keyof typeof cardAnimationVariants];
-              
+
+  
+
               return (
                 <motion.div key={post._id} variants={finalVariants}>
                   <PostCard post={post} aspect="square" />
@@ -345,15 +348,13 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
           viewport={{ once: true, amount: 0.5 }}
           variants={fadeUpVariant}
           transition={{ delay: 0.4 }} 
-        >
-          <Link href="/blog">
+        >  
             <Button
-              variant="outline"
-              className="cursor-pointer px-6 text-xs text-gray-500 sm:py-5 sm:text-base"
+              onClick={() => router.push('/blog')}
+              className="cursor-pointer px-6 text-xs sm:py-5 sm:text-base bg-[#F86642] hover:bg-orange-600 shadow-[2px_6px_20px_-3px_#F86642]/60 rounded-xl"
             >
               View all posts
             </Button>
-          </Link>
         </motion.div>
         <motion.div 
           className="mt-4 text-center"
@@ -363,14 +364,12 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
           variants={fadeUpVariant}
           transition={{ delay: 0.4 }} 
         >
-          <Link href="/calculator">
             <Button
-              variant="outline"
-              className="cursor-pointer px-6 text-xs text-gray-500 sm:py-5 sm:text-base"
+              onClick={() => router.push('/calculator')}
+              className="cursor-pointer px-6 text-xs sm:py-5 sm:text-base bg-[#F86642] hover:bg-orange-600 shadow-[2px_6px_20px_-3px_#F86642]/60 rounded-xl"
             >
               Calculator
             </Button>
-          </Link>
         </motion.div>
       </div>
     </div>

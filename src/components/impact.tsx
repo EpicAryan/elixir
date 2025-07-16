@@ -86,7 +86,7 @@ export function ImpactSection() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-white my-8 xl:my-20">
+    <section ref={sectionRef} className="bg-white xl:my-20">
       <div className="container mx-auto px-6 lg:px-8 2xl:px-12">
         <motion.div
           initial="hidden"

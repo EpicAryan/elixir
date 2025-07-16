@@ -57,7 +57,7 @@ const Hero = () => {
 
   return (
     <section className="relative pt-8 min-h-screen">
-      <div className="pt-10 md:pt-16 pb-20 md:pb-24 container mx-auto px-6 lg:px-8 2xl:px-12">
+      <div className="pt-10 md:pt-16 pb-12 md:pb-16 container mx-auto px-6 lg:px-8 2xl:px-12">
         <div className="relative">
           <motion.div 
             className="relative h-[70vh] rounded-4xl sm:rounded-3xl overflow-hidden"
@@ -77,14 +77,14 @@ const Hero = () => {
             {/* **Mobile View Elements** */}
 
             <motion.div
-              className="md:hidden absolute top-[15%] left-1/2 transform -translate-x-1/2 z-20"
+              className="md:hidden absolute left-1/2 transform -translate-x-1/2 z-20 w-full p-6 sm:p-12 px-12"
               variants={itemVariants2}
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.5 }}
             >
-              <div className="bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-5 rounded-2xl drop-shadow-2xl max-w-sm">
-                <p className="text-[11px] sm:text-xs font-semibold tracking-wider text-slate-600 font-gtpro">CHENNAIS&apos; FAVORITE INTERIORS</p>
+              <div className="bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-5 rounded-2xl drop-shadow-2xl max-w-lg">
+                <p className="text-[11px] sm:text-xs font-semibold tracking-wider text-slate-600 font-gtpro text-center">CHENNAIS&apos; FAVORITE INTERIORS</p>
                 <div className="flex items-center justify-center gap-2 text-yellow-500">
                   <h2 className="text-base sm:text-lg font-normal text-slate-900 font-gtpro">
                     4.3k+ Ratings
@@ -95,7 +95,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Mobile Center Text */}
-            <div className="md:hidden absolute inset-0 flex items-center justify-center text-white text-2xl sm:text-3xl text-center z-10">
+            <div className="md:hidden absolute inset-0 flex items-center justify-center text-white text-lg sm:text-xl text-center z-10">
               <div>
                 <span className="inline-flex items-center gap-2 font-geist font-medium">
                   Move in with a smile
@@ -119,9 +119,18 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
             >
-              <h3 className="text-xl sm:text-2xl font-normal text-black">Make yourself at Home</h3>
-              <p className="mt-2 text-base sm:text-lg text-slate-600">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
-              <Button className="relative mt-4 mb-2 w-full bg-[#F86642] hover:bg-orange-600 text-lg sm:text-xl text-white font-medium py-7 shadow-[2px_14px_30px_-6px_#F86642]/60 rounded-xl">
+              <div className="flex gap-2 items-center">
+                <Image 
+                  src="/logo.svg" 
+                  alt="Elixir Logo" 
+                  width={32} 
+                  height={32} 
+                  className="size-6 sm:size-7"
+                />
+                <h3 className="text-lg sm:text-2xl font-normal text-black">Make yourself at Home</h3>
+              </div>
+              <p className="mt-2 text-sm sm:text-lg text-slate-600">Chennai&apos;s No.1 interior design — just share your floor plan and we&apos;ll handle the rest.</p>
+              <Button className="relative mt-4 w-full bg-[#F86642] hover:bg-orange-600 text-sm sm:text-xl text-white font-medium py-5 shadow-[2px_6px_30px_-3px_#F86642]/60 rounded-xl">
                 BOOK A FREE CONSULTATION
               </Button>
             </motion.div>
@@ -195,7 +204,7 @@ const Hero = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h4 className="ml-4 md:text-xs xl:text-base 2xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] 2xl:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
+            <h4 className="ml-4 md:text-xs xl:text-base 2xl:text-lg font-semibold font-geist tracking-widest text-[#ABABAB] mb-3 2xl:mb-6 text-center md:text-start">OUR TRUSTED PARTNERS</h4>
             <div className="relative w-full overflow-hidden  mask-fade-x">
               <InfiniteMovingCardsDemo/>
             </div>

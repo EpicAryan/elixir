@@ -1,8 +1,8 @@
 import { groq } from 'next-sanity'
 
-// Query for the blog index page (gets the first 8 posts)
+// Query for the blog index page (gets the first 5 posts)
 export const postsQuery = groq`
-*[_type == "post"] | order(publishedAt desc) [0...8] {
+*[_type == "post"] | order(publishedAt desc) [0...5] {
   _id,
   title,
   description,

@@ -126,8 +126,8 @@ const AnimatedTitle = ({ title, aspect, slug }: { title: string; aspect?: string
     <motion.h2
       className={`${
         aspect === 'landscape' 
-          ? 'text-xl md:text-2xl' 
-          : 'text-lg'
+          ? 'text-base md:text-2xl' 
+          : 'text-base md:text-lg'
       } font-semibold leading-snug tracking-tight mt-2 text-black dark:text-white`}
       variants={titleContainerVariants}
       initial="hidden"
@@ -135,7 +135,7 @@ const AnimatedTitle = ({ title, aspect, slug }: { title: string; aspect?: string
       viewport={{ once: true, amount: 0.1 }}
     >
       <Link href={`/blog/${slug}`}>
-        <span className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
+        <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
           {title.split(' ').map((word, wordIndex) => (
             <span key={wordIndex} className="inline-block mr-1">
               {word.split('').map((char, charIndex) => (
@@ -184,7 +184,7 @@ export const PostCard = ({ post, aspect = 'square', preloadImage = false }: { po
             alt={post.mainImage.alt || 'Blog post image'}
             fill
             priority={preloadImage}
-            className="object-cover transition-all"
+            className="object-cover transition-all "
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Link>

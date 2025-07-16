@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
-import { motion, MotionValue, PanInfo, spring, Transition, useMotionValue, useTransform } from "framer-motion";
+import { easeInOut, motion, MotionValue, PanInfo, Transition, useMotionValue, useTransform } from "framer-motion";
 import React, { JSX  } from "react";
 import Image from "next/image";
 
@@ -58,7 +58,18 @@ const DEFAULT_ITEMS: CarouselItem[] = [
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
-const SPRING_OPTIONS = { type: spring, stiffness: 150, damping: 25 };
+const SPRING_OPTIONS = {  duration: 0.6,
+  ease: easeInOut, };
+
+// interface CarouselItemComponentProps {
+//   item: CarouselItem;
+//   index: number;
+//   itemWidth: number;
+//   trackItemOffset: number;
+//   round: boolean;
+//   x: MotionValue<number>; 
+//   effectiveTransition: Transition;
+// }
 
 interface CarouselItemComponentProps {
   item: CarouselItem;
@@ -66,8 +77,11 @@ interface CarouselItemComponentProps {
   itemWidth: number;
   trackItemOffset: number;
   round: boolean;
-  x: MotionValue<number>; 
+  x: MotionValue<number>;
   effectiveTransition: Transition;
+  items: CarouselItem[];
+  currentIndex: number;
+  setCurrentIndex: (index: number) => void;
 }
 
 const CarouselItemComponent: React.FC<CarouselItemComponentProps> = ({
@@ -77,6 +91,9 @@ const CarouselItemComponent: React.FC<CarouselItemComponentProps> = ({
   trackItemOffset,
   x,
   effectiveTransition,
+  items,
+  currentIndex,
+  setCurrentIndex,
 }) => {
   const range = [
     -(index + 1) * trackItemOffset,
@@ -125,6 +142,23 @@ const CarouselItemComponent: React.FC<CarouselItemComponentProps> = ({
           className="w-40 xl:w-[180px]"
         />
       </p>
+      <div className="absolute bottom-4 left-4 flex gap-2">
+        {items.map((_, dotIndex) => (
+          <motion.div
+            key={dotIndex}
+            className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${
+              currentIndex % items.length === dotIndex
+                ? "bg-black"  // or "bg-white" depending on card bg
+                : "bg-gray-300"
+            }`}
+            animate={{
+              scale: currentIndex % items.length === dotIndex ? 1.2 : 1,
+            }}
+            onClick={() => setCurrentIndex(dotIndex)}
+            transition={{ duration: 0.15 }}
+          />
+        ))}
+      </div>
     </motion.div>
   );
 };
@@ -299,10 +333,13 @@ export default function Carousel({
             round={round}
             x={x}
             effectiveTransition={effectiveTransition}
+            items={items}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
           />
         ))}
       </motion.div>
-      <div
+      {/* <div
         className={`flex w-full justify-center ${
           round ? "absolute z-20 bottom-12 left-1/2 -translate-x-1/2" : ""
         }`}
@@ -324,7 +361,7 @@ export default function Carousel({
             />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
