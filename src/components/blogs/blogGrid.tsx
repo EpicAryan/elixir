@@ -355,6 +355,23 @@ export const BlogGrid = ({ posts }: { posts: HomePagePost[] }) => {
             </Button>
           </Link>
         </motion.div>
+        <motion.div 
+          className="mt-4 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={fadeUpVariant}
+          transition={{ delay: 0.4 }} 
+        >
+          <Link href="/calculator">
+            <Button
+              variant="outline"
+              className="cursor-pointer px-6 text-xs text-gray-500 sm:py-5 sm:text-base"
+            >
+              Calculator
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </div>
   )
