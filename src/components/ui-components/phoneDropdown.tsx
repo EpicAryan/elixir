@@ -27,9 +27,12 @@ const validCountryCodes = Object.keys(allCountries).filter((code) => {
 interface Props {
   value: string;
   onChange: (value: string) => void;
+  className?: string; 
+  inputClassName?: string;
+  wrapperClassName?: string;
 }
 
-export default function PhoneDropdown({ value, onChange }: Props) {
+export default function PhoneDropdown({ value, onChange, className, inputClassName, wrapperClassName }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>("IN");
   const [localNumber, setLocalNumber] = useState("");
@@ -88,11 +91,12 @@ export default function PhoneDropdown({ value, onChange }: Props) {
   }, []);
 
   return (
-    <div className="w-full relative" ref={dropdownRef} onKeyDown={handleKeyDown}>
+    <div className={`relative w-full ${className || ""}`} ref={dropdownRef} onKeyDown={handleKeyDown}>
 
     <div
-        className={`flex items-center rounded-lg px-3 py-2 sm:py-3.5 bg-white transition-all duration-200 border
+        className={`${wrapperClassName || ""} flex items-center rounded-lg px-3 py-2 sm:py-3.5 bg-white transition-all duration-200 border
             ${isValid || !value ? 'border-gray-300' : 'border-red-500 border'}
+            
         `}
     >
         {/* Country Selector */}
@@ -100,7 +104,7 @@ export default function PhoneDropdown({ value, onChange }: Props) {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 pr-2 border-r border-gray-300"
+            className="flex items-center gap-2 pr-2 border-r border-gray-300 cursor-pointer"
           >
             <Image
                 width={40}
@@ -124,7 +128,7 @@ export default function PhoneDropdown({ value, onChange }: Props) {
 
           {/* Dropdown */}
           {isOpen && (
-            <div className="absolute z-20 mt-1 bg-white border shadow-lg w-72 max-h-52 sm:max-h-64 overflow-y-auto rounded-lg text-left">
+            <div className="absolute z-20 mt-1 bg-white border shadow-lg w-68 sm:w-72 max-h-52 sm:max-h-64 overflow-y-auto rounded-lg text-left">
               <input
                 type="text"
                 placeholder="Search countries..."
@@ -164,7 +168,7 @@ export default function PhoneDropdown({ value, onChange }: Props) {
           type="tel"
           value={localNumber}
           onChange={handleNumberChange}
-          className="ml-3 flex-1 outline-none border-none text-sm"
+          className={`ml-3 flex-1 outline-none border-none text-sm ${inputClassName || ""}`}
           placeholder="Enter phone number"
         />
       </div>

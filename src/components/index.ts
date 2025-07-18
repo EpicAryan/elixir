@@ -9,6 +9,7 @@ import { HappyHomes } from "./happyHome";
 import { StayInTheKnow } from "./StayInTheKnow";
 import { Footer } from "./Footer";
 import { Projects } from "./projects";
+import { ContactFormDialog } from "./contactFormDialog";
 
 export {
     Navbar,
@@ -21,5 +22,6 @@ export {
     HappyHomes,
     StayInTheKnow,
     Footer,
-    Projects
+    Projects,
+    ContactFormDialog
 }

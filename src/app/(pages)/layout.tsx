@@ -20,7 +20,6 @@ export default function RootLayout({
         {children}
         {!shouldHideLayout && <Footer />}
          <WhatsAppFloat 
-          phoneNumber="1234567890" 
           message="Hi! I'm interested in your services and would like to know more."
         />
       </body>
