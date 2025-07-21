@@ -35,10 +35,12 @@ export const Compare = ({
   viewAnimationDuration = 3000,
   animationEndPercentage = 75,
 }: CompareProps) => {
-  const [sliderXPercent, setSliderXPercent] = useState(100); 
+  const [sliderXPercent, setSliderXPercent] = useState(100);
   const [isDragging, setIsDragging] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isViewAnimating, setIsViewAnimating] = useState(false);
+  const [dragStartPos, setDragStartPos] = useState({ x: 0, y: 0 });
+  const [hasDragged, setHasDragged] = useState(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
@@ -59,8 +61,8 @@ export const Compare = ({
           });
         },
         {
-          threshold: 0.3, 
-          rootMargin: '0px 0px -50px 0px' 
+          threshold: 0.3,
+          rootMargin: '0px 0px -50px 0px'
         }
       );
 
@@ -78,12 +80,11 @@ export const Compare = ({
     };
   }, [hasAnimated, enableViewAnimation]);
 
-
   const startViewAnimation = useCallback(() => {
     if (isViewAnimating || hasAnimated) return;
 
     setIsViewAnimating(true);
-    
+
     const startTime = performance.now();
     const startValue = 100;
     const endValue = animationEndPercentage;
@@ -105,10 +106,9 @@ export const Compare = ({
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        console.log("Animation complete"); 
         setIsViewAnimating(false);
         setHasAnimated(true);
-        setSliderXPercent(endValue); 
+        setSliderXPercent(endValue);
       }
     };
 
@@ -121,7 +121,7 @@ export const Compare = ({
     const startTime = Date.now();
     const animate = () => {
       if (isViewAnimating) return;
-      
+
       const elapsedTime = Date.now() - startTime;
       const progress = (elapsedTime % (autoplayDuration * 2)) / autoplayDuration;
       const percentage = progress <= 1 ? progress * 100 : (2 - progress) * 100;
@@ -159,27 +159,42 @@ export const Compare = ({
     }
     if (slideMode === "drag") {
       setIsDragging(false);
+      setHasDragged(false);
     }
     if (!isViewAnimating && hasAnimated) {
       startAutoplay();
     }
   }
 
-  const handleStart = useCallback(() => {
+  const handleStart = useCallback((clientX: number, clientY: number) => {
     if (slideMode === "drag" && !isViewAnimating && hasAnimated) {
       setIsDragging(true);
+      setHasDragged(false);
+      setDragStartPos({ x: clientX, y: clientY });
     }
   }, [slideMode, isViewAnimating, hasAnimated]);
 
   const handleEnd = useCallback(() => {
     if (slideMode === "drag") {
       setIsDragging(false);
+      // Reset drag flag after a short delay to allow click events to check it
+      setTimeout(() => setHasDragged(false), 10);
     }
   }, [slideMode]);
 
   const handleMove = useCallback(
-    (clientX: number) => {
+    (clientX: number, clientY: number) => {
       if (!sliderRef.current || isViewAnimating || !hasAnimated) return;
+      
+      // Check if user has moved enough to be considered dragging
+      if (isDragging && !hasDragged) {
+        const deltaX = Math.abs(clientX - dragStartPos.x);
+        const deltaY = Math.abs(clientY - dragStartPos.y);
+        if (deltaX > 5 || deltaY > 5) {
+          setHasDragged(true);
+        }
+      }
+
       if (slideMode === "hover" || (slideMode === "drag" && isDragging)) {
         const rect = sliderRef.current.getBoundingClientRect();
         const x = clientX - rect.left;
@@ -189,19 +204,23 @@ export const Compare = ({
         });
       }
     },
-    [slideMode, isDragging, isViewAnimating, hasAnimated]
+    [slideMode, isDragging, isViewAnimating, hasAnimated, dragStartPos, hasDragged]
   );
 
-  const handleMouseDown = useCallback(() => handleStart(), [handleStart]);
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    handleStart(e.clientX, e.clientY);
+  }, [handleStart]);
+
   const handleMouseUp = useCallback(() => handleEnd(), [handleEnd]);
+
   const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => handleMove(e.clientX),
+    (e: React.MouseEvent) => handleMove(e.clientX, e.clientY),
     [handleMove]
   );
 
-  const handleTouchStart = useCallback(() => {
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
     if (!autoplay && !isViewAnimating && hasAnimated) {
-      handleStart();
+      handleStart(e.touches[0].clientX, e.touches[0].clientY);
     }
   }, [handleStart, autoplay, isViewAnimating, hasAnimated]);
 
@@ -214,7 +233,7 @@ export const Compare = ({
   const handleTouchMove = useCallback(
     (e: React.TouchEvent) => {
       if (!autoplay && !isViewAnimating && hasAnimated) {
-        handleMove(e.touches[0].clientX);
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
       }
     },
     [handleMove, autoplay, isViewAnimating, hasAnimated]
@@ -228,6 +247,7 @@ export const Compare = ({
         position: "relative",
         cursor: isViewAnimating ? "default" : slideMode === "drag" ? "grab" : "col-resize",
       }}
+      data-dragging={hasDragged}
       onMouseMove={handleMouseMove}
       onMouseLeave={mouseLeaveHandler}
       onMouseEnter={mouseEnterHandler}

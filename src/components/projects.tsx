@@ -1,7 +1,18 @@
+'use client'
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Compare } from "@/components/ui/compare";
 
 export function Projects() {
+  const router = useRouter();
+
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+     if (!(e.target as Element).closest('[data-dragging="true"]')) {
+      router.push('/projects');
+    }
+  };
+
   return (
     <div id="projects" className="w-full h-full container mx-auto px-6 lg:px-8 2xl:px-12 pt-10 lg:pt-24 font-gtpro">
       {/* Title and Subtitle */}
@@ -15,10 +26,12 @@ export function Projects() {
       </div>
 
       {/* Grid layout for all three Compare components */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[70vh]"> */}
       <div className="grid grid-cols-1 gap-6 h-[40vh]">
         {/* First Compare - spans two columns on md+ */}
-        <div className="md:col-span-2 max-h-[200px] md:max-h-[300px] lg:max-h-[400px] w-full rounded-3xl">
+        <div 
+          className="md:col-span-2 max-h-[200px] md:max-h-[300px] lg:max-h-[400px] w-full rounded-3xl cursor-pointer"
+          onClick={handleCardClick}
+        >
           <Compare
             firstImage="./compare/compare-1.jpg"
             secondImage="./compare/compare-2.jpg"
@@ -32,38 +45,6 @@ export function Projects() {
             animationEndPercentage={35}
           />
         </div>
-
-        {/* Second Compare */}
-        {/* <div className="h-full w-full rounded-3xl">
-          <Compare
-            firstImage="./compare/compare-1.jpg"
-            secondImage="./compare/compare-2.jpg"
-            firstImageClassName="object-cover object-center w-full"
-            secondImageClassname="object-cover object-center w-full"
-            className="h-full w-full rounded-[22px] md:rounded-lg"
-            slideMode="drag"
-            autoplay={false}
-            enableViewAnimation={true}
-            viewAnimationDuration={2500}
-            animationEndPercentage={75}
-          />
-        </div> */}
-
-        {/* Third Compare */}
-        {/* <div className="h-full w-full rounded-3xl">
-          <Compare
-            firstImage="./compare/compare-1.jpg"
-            secondImage="./compare/compare-2.jpg"
-            firstImageClassName="object-cover object-center w-full"
-            secondImageClassname="object-cover object-center w-full"
-            className="h-full w-full rounded-[22px] md:rounded-lg"
-            slideMode="drag"
-            autoplay={false}
-            enableViewAnimation={true}
-            viewAnimationDuration={2800}
-            animationEndPercentage={75}
-          />
-        </div> */}
       </div>
     </div>
   );

@@ -153,8 +153,6 @@ const Hero = () => {
                   autoplay={true}
                   autoplayDelay={4000}
                   pauseOnHover={true}
-                  loop={true}
-                  round={false}
                 />
             </motion.div>
 
