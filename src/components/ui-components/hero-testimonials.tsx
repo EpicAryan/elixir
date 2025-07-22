@@ -358,7 +358,7 @@
 // }
 
 import { useEffect, useState, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import React, { JSX } from "react";
 import Image from "next/image";
 

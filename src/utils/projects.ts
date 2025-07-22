@@ -8,6 +8,7 @@ export interface Project {
   description?: string
   year?: string
   client?: string
+  images?: string[]
 }
 
 export const projectsData: Project[] = [
@@ -17,9 +18,15 @@ export const projectsData: Project[] = [
     category: 'Digital Design',
     image: 'https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     slug: 'urban-city-life',
-    description: 'Modern urban apartment design with minimalist aesthetics',
+    description: 'Modern urban apartment design with minimalist aesthetics. Comprehensive design analysis and implementation. Contemporary architectural visualization and branding',
     year: '2024',
-    client: 'Private Client'
+    client: 'Private Client',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '2',

@@ -172,7 +172,7 @@
 
 'use client'
 
-import { easeOut, motion, useInView } from 'framer-motion'
+import { easeOut, motion, useInView } from 'motion/react'
 import { PostCard } from './postCard'
 import type { Post } from '../../../@types/content'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'

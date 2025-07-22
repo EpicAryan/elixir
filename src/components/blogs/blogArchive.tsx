@@ -103,7 +103,7 @@
 
 'use client'
 
-import { easeOut, motion } from 'framer-motion'
+import { easeOut, motion } from 'motion/react'
 import { PostCard } from './postCard'
 import { Pagination } from './pagination'
 import type { Post } from '../../../@types/content' 

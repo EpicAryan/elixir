@@ -1,8 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
-import { easeOut } from "framer-motion";
+import { easeOut, motion } from "motion/react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, Children, useRef, useLayoutEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { FormData } from "../../types/stepper";
 import { Button } from "../ui/button";
 import {

@@ -1,9 +1,8 @@
 'use client';
 
-import { motion, easeInOut } from 'framer-motion';
+import { motion, easeInOut } from 'motion/react';
 import { SVGProps } from 'react';
 
-// We pass isInView as a prop to trigger the animation from the parent
 export const WavyUnderline = ({ isInView, ...props }: { isInView: boolean } & SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 233 23"
