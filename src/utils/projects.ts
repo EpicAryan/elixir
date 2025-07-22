@@ -36,7 +36,13 @@ export const projectsData: Project[] = [
     slug: 'case-study',
     description: 'Comprehensive design analysis and implementation',
     year: '2024',
-    client: 'Research Institute'
+    client: 'Research Institute',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '3',
@@ -46,7 +52,13 @@ export const projectsData: Project[] = [
     slug: 'modern-architecture',
     description: 'Contemporary architectural visualization and branding',
     year: '2024',
-    client: 'Architectural Firm'
+    client: 'Architectural Firm',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '4',
@@ -56,7 +68,13 @@ export const projectsData: Project[] = [
     slug: 'prestigious-penthouse',
     description: 'Luxury penthouse interior with premium finishes',
     year: '2023',
-    client: 'Private Developer'
+    client: 'Private Developer',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '5',
@@ -66,7 +84,13 @@ export const projectsData: Project[] = [
     slug: 'house-renovation',
     description: 'Complete residential renovation and rebranding',
     year: '2023',
-    client: 'Family Residence'
+    client: 'Family Residence',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '6',
@@ -76,7 +100,13 @@ export const projectsData: Project[] = [
     slug: 'refined-elegance',
     description: 'Sophisticated interior design with classical elements',
     year: '2023',
-    client: 'Boutique Hotel'
+    client: 'Boutique Hotel',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '7',
@@ -86,7 +116,13 @@ export const projectsData: Project[] = [
     slug: 'brooklyn-residence',
     description: 'Artistic residential space with custom printed elements',
     year: '2024',
-    client: 'Artist Studio'
+    client: 'Artist Studio',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '8',
@@ -96,7 +132,13 @@ export const projectsData: Project[] = [
     slug: 'corporate-workspace',
     description: 'Modern office design with digital integration',
     year: '2024',
-    client: 'Tech Startup'
+    client: 'Tech Startup',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '9',
@@ -106,7 +148,13 @@ export const projectsData: Project[] = [
     slug: 'minimal-living',
     description: 'Minimalist approach with exposed masonry elements',
     year: '2023',
-    client: 'Design Enthusiast'
+    client: 'Design Enthusiast',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '10',
@@ -116,7 +164,13 @@ export const projectsData: Project[] = [
     slug: 'portfolio-showcase',
     description: 'Gallery space designed for portfolio presentations',
     year: '2024',
-    client: 'Creative Agency'
+    client: 'Creative Agency',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '11',
@@ -126,7 +180,13 @@ export const projectsData: Project[] = [
     slug: 'luxury-retail-space',
     description: 'High-end retail interior with e-commerce integration',
     year: '2024',
-    client: 'Fashion Brand'
+    client: 'Fashion Brand',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   },
   {
     id: '12',
@@ -136,6 +196,12 @@ export const projectsData: Project[] = [
     slug: 'custom-art-installation',
     description: 'Bespoke art pieces with custom printing techniques',
     year: '2023',
-    client: 'Art Gallery'
+    client: 'Art Gallery',
+    images:[
+      'https://images.unsplash.com/photo-1618221257490-1d703817596c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553104101-f1608f351b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1617104678098-de229db51175?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+    ]
   }
 ]
