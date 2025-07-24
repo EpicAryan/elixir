@@ -294,8 +294,8 @@ export function HappyHomes() {
     'https://images.ctfassets.net/m3x6aw9x53qp/12DsRXnmI01Wg00sHceAaI/ad380bbbea32f89f3ee0a13616d1e717/gallery-7.webp',
     'https://images.ctfassets.net/m3x6aw9x53qp/5mEPK34zxnhp1X8iqeEpin/1e90d9991918d6e9d233ee22b3d7c443/gallery-8.webp',
     'https://images.ctfassets.net/m3x6aw9x53qp/2s0ivtsmDhwQUyG162WAO8/251b05127abc82cceffadbe9fe3e85b8/gallery-9.webp',
-    'https://images.ctfassets.net/m3x6aw9x53qp/2fYMWzCqxAQkccLT8DytGH/5a1b9407e2bfbde21a826182987a65a1/gallery-2.webp',
-    'https://images.ctfassets.net/m3x6aw9x53qp/4mOQcdYQZ8HlWhw3WTWtEe/3e603095b97a9df205ba94276507fd80/gallery-4.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/3E1bqkQNMG47VQ8IJ9Y8JC/78e8fac29b91d13eb06a7ea49eb02efe/gallery-10.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/3oKPmvQg2sPdUMxWvaYwMb/9e7723b2a582220f9166d04e07dbb24d/gallery-11.webp',
   ];
 
   useEffect(() => {

@@ -154,15 +154,12 @@ const priceTable: PriceTable = {
   }
 };
 
-function formatNumber(num: number): string {
-  return Math.round(num).toLocaleString();
-}
 
 
 function getPriceRange(basePrice: number): { lower: number; upper: number } {
   return {
-    lower: basePrice * 0.7, // 30% less
-    upper: basePrice * 1.3  // 30% more
+    lower: basePrice * 0.7, 
+    upper: basePrice * 1.3  
   };
 }
 
@@ -204,6 +201,27 @@ export function calculatePrice(formData: FormData): PriceRange {
   totalUpperBound += rooms.dining * diningRange.upper;
 
   return {
-    range: `${formatNumber(totalLowerBound)} → ${formatNumber(totalUpperBound)}`
+    range: formatLakhsRange(totalLowerBound, totalUpperBound)
   };
+}
+
+
+function formatLakhs(value: number): number {
+  return Math.round(value / 10000) / 10; 
+}
+
+function formatLakhsRange(lower: number, upper: number): string {
+  const min = formatLakhs(lower);
+  const max = formatLakhs(upper);
+
+  const roundedMin = min < 1 ? Math.round(min * 10) / 10 : Math.round(min);
+  const roundedMax = max < 1 ? Math.round(max * 10) / 10 : Math.round(max);
+
+  const suffix = 'L';
+
+  if (roundedMin === roundedMax) {
+    return `₹${roundedMin}${suffix}`;
+  }
+
+  return `₹${roundedMin}${suffix} → ₹${roundedMax}${suffix}`;
 }

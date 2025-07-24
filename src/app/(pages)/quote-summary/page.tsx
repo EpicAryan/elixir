@@ -39,7 +39,7 @@ function QuoteSummaryContent() {
                         {/* Price Range Display */}
                         <div className="mb-4">
                             <p className="text-xl sm:text-4xl font-bold text-green-600 mb-2">
-                                ₹{priceRange}*
+                                {priceRange}*
                             </p>
                         </div>
 

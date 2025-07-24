@@ -35,17 +35,17 @@ export default function PackageSelectionStep({
   setFormData: React.Dispatch<React.SetStateAction<FormData>>
 }) {
   return (
-    <div className="flex flex-col h-full w-full max-w-sm mx-auto">
+    <div className="flex flex-col h-full w-full mx-auto">
       <div className="text-center mb-6">
         <h2 className="text-sm sm:text-xl font-bold text-zinc-900">Pick your package</h2>
       </div>
-      <div className="flex-1 overflow-y-auto px-2 sm:px-6">
+      <div className="grid sm:grid-cols-2 overflow-y-auto gap-6 px-8 sm:px-0 md:px-8">
         {packages.map((pkg) => {
           const isSelected = formData.package === pkg.id
           return (
             <div
               key={pkg.id}
-              className={`border rounded-xl p-4 mb-4 cursor-pointer shadow-sm
+              className={`border rounded-xl p-4 cursor-pointer shadow-sm max-w-60 sm:max-w-full justify-self-center
                 ${isSelected ? 'border-orange-500 bg-orange-50'
                  : 'border-gray-200 hover:border-gray-300'}`}
               onClick={() =>

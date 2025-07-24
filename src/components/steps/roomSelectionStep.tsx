@@ -79,7 +79,7 @@ export default function RoomSelectionStep({
                 <button
                   onClick={() => updateRoomCount(room.key, -1)}
                   className={`size-5.5 sm:size-7 rounded-full text-white text-lg flex items-center justify-center transition cursor-pointer
-                    ${count <= 0 ? 'bg-orange-300 cursor-not-allowed' : 'bg-[#F86642] hover:bg-orange-600'}
+                    ${count <= 0 ? 'bg-[#F86642]/70 cursor-not-allowed' : 'bg-[#F86642] hover:bg-orange-600'}
                   `}
                   disabled={count <= 0}
                 >
@@ -91,7 +91,7 @@ export default function RoomSelectionStep({
                 <button
                   onClick={() => updateRoomCount(room.key, 1)}
                   className={`size-5.5 sm:size-7 rounded-full text-white text-lg flex items-center justify-center transition cursor-pointer
-                    ${count >= maxCount ? 'bg-orange-300 cursor-not-allowed' : 'bg-[#F86642] hover:bg-orange-600'}
+                    ${count >= maxCount ? 'bg-[#F86642]/70 cursor-not-allowed' : 'bg-[#F86642] hover:bg-orange-600'}
                   `}
                   disabled={count >= maxCount}
                 >
