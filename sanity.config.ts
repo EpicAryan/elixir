@@ -28,4 +28,10 @@ export default defineConfig({
     codeInput(),
     
   ],
+  document: {
+    actions: (prev) => {
+      // This ensures all default actions (including delete) are returned
+      return prev
+    },
+  },
 })

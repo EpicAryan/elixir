@@ -9,7 +9,7 @@ type HomePagePost = Pick<Post, '_id' | 'title' | 'slug' | 'mainImage' | 'publish
   category: { title: string }
 }
 
-export const revalidate = 60
+export const revalidate = 0
 
 async function getFeaturedPosts() {
   const posts = await client.fetch<HomePagePost[]>(postsQuery)
