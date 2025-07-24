@@ -55,7 +55,7 @@ const ContactInfo = ({
 
 export function Footer() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.1 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -128,10 +128,10 @@ export function Footer() {
           <motion.div variants={itemVariants} className="md:border-l md:border-[#3F3F3F] md:pl-8">
             <h3 className="font-semibold text-white mb-4 font-gtpro">Elixir Interior Design</h3>
             <ul className="space-y-3">
-              <FooterLink href="/home">Home</FooterLink>
-              <FooterLink href="/projects">Projects</FooterLink>
-              <FooterLink href="/why-choose-us">Why choose us?</FooterLink>
-              <FooterLink href="/testimonials">Testimonials</FooterLink>
+              <FooterLink href="/">Home</FooterLink>
+              <FooterLink href="/#us">Why choose us?</FooterLink>
+              <FooterLink href="/#projects">Projects</FooterLink>
+              <FooterLink href="/#us">Testimonials</FooterLink>
               <FooterLink href="/about">About us</FooterLink>
               <FooterLink href="/experience-center">Visit our Experience center</FooterLink>
             </ul>

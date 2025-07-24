@@ -9,7 +9,7 @@ import { motion, useAnimation, useInView } from "motion/react";
 export function Projects() {
   const router = useRouter();
   const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.4 });
+  const inView = useInView(ref, { amount: 0.1 });
   const controls = useAnimation();
 
   useEffect(() => {

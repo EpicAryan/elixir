@@ -7,7 +7,7 @@ import { DreamSpaceCta } from "./dreamSpaceCta";
 import { BuiltToLast } from "./buildToLast";
 import { HappyHomes } from "./happyHome";
 import { StayInTheKnow } from "./StayInTheKnow";
-import { Footer } from "./Footer";
+import { Footer } from "./footer";
 import { Projects } from "./projects";
 import { ContactFormDialog } from "./contactFormDialog";
 

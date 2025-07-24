@@ -3,19 +3,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { appendToGoogleSheet } from '../../../lib/googleSheets';
 import { sendTelegramNotification } from '../../../lib/telegramNotify';
-import { calculatePrice } from '@/utils/priceCalculator';
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.json();
-    const totalPrice = calculatePrice(formData);
     await appendToGoogleSheet(formData);
-    await sendTelegramNotification(formData);
+    const telegramResult = await sendTelegramNotification(formData);
 
      return NextResponse.json({ 
       success: true, 
       message: 'Form submitted successfully',
-      totalPrice
+      priceRange: telegramResult.priceRange
     });
   } catch (e) {
     console.error(e);

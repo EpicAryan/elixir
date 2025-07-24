@@ -192,7 +192,6 @@ const GalleryImage = ({
 );
 
 const InfiniteScrollCards = ({ images }: { images: string[] }) => {
-  // Create duplicated array for infinite scroll
   const duplicatedImages = [...images, ...images, ...images, ...images, ...images, ...images, ...images];
 
   return (
@@ -286,17 +285,17 @@ export function HappyHomes() {
   const [isMobile, setIsMobile] = useState(false);
 
   const images = [
-    '/happy/image-1.jpg',
-    '/happy/image-5.jpg',
-    '/happy/image-2.jpg',
-    '/happy/image-5.jpg',
-    '/happy/image-3.jpg',
-    '/happy/image-2.jpg',
-    '/happy/image-4.jpg',
-    '/happy/image-3.jpg',
-    '/happy/image-1.jpg',
-    '/happy/image-3.jpg',
-    '/happy/image-5.jpg',
+    'https://images.ctfassets.net/m3x6aw9x53qp/2nMs7DkoLcqqU0L3dDBVrz/32f5f8f0cbd80c80f9b6e2a055f84cb6/gallery-1.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/2fYMWzCqxAQkccLT8DytGH/5a1b9407e2bfbde21a826182987a65a1/gallery-2.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/1ZRWyNzYcd66gL15rTULBb/bc871592edd2a9ff5231d891371bece5/gallery-3.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/4mOQcdYQZ8HlWhw3WTWtEe/3e603095b97a9df205ba94276507fd80/gallery-4.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/5W0Wkv9z7T5Tx3F6cHiIzi/7531212b52063ed99039822b00308298/gallery-5.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/3IUsZ74gQvYftblONOlDLq/4679b91b19fe68d8d541942eb177796f/gallery-6.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/12DsRXnmI01Wg00sHceAaI/ad380bbbea32f89f3ee0a13616d1e717/gallery-7.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/5mEPK34zxnhp1X8iqeEpin/1e90d9991918d6e9d233ee22b3d7c443/gallery-8.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/2s0ivtsmDhwQUyG162WAO8/251b05127abc82cceffadbe9fe3e85b8/gallery-9.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/2fYMWzCqxAQkccLT8DytGH/5a1b9407e2bfbde21a826182987a65a1/gallery-2.webp',
+    'https://images.ctfassets.net/m3x6aw9x53qp/4mOQcdYQZ8HlWhw3WTWtEe/3e603095b97a9df205ba94276507fd80/gallery-4.webp',
   ];
 
   useEffect(() => {

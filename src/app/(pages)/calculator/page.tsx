@@ -36,7 +36,7 @@ export default function InteriorCalculator() {
         }
     });
 
-    const handleFinalStepCompleted = async (data: FormData): Promise<{ totalPrice: number }> => {
+    const handleFinalStepCompleted = async (data: FormData): Promise<{ priceRange: string }> => {
         try {
             const response = await fetch('/api/submit-form', {
                 method: 'POST',
@@ -50,11 +50,11 @@ export default function InteriorCalculator() {
                 const result = await response.json();
                 
                 toast.success("Form submitted successfully!", {
-                    description: `Your estimated cost is ₹${result.totalPrice.toLocaleString('en-IN')}. We'll get back to you soon.`,
+                    description: `Your estimated cost is ₹${result.priceRange}. We'll get back to you soon.`,
                     duration: 5000,
                 });
                 
-                return { totalPrice: result.totalPrice };
+                return { priceRange: result.priceRange };
             } else {
                 throw new Error('Failed to submit form');
             }

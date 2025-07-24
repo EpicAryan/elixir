@@ -8,7 +8,12 @@ interface ContactFormStepProps {
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
+const isValidEmail = (email: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 export default function ContactFormStep({ formData, setFormData }: ContactFormStepProps) {
+  const [emailError, setEmailError] = React.useState('');
+
   const updateContactInfo = (
     field: keyof FormData['contactInfo'],
     value: string | boolean
@@ -41,8 +46,20 @@ export default function ContactFormStep({ formData, setFormData }: ContactFormSt
           label="Email ID"
           type="email"
           value={formData.contactInfo.email}
-          onChange={(e) => updateContactInfo('email', e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            updateContactInfo('email', value);
+            if (!isValidEmail(value)) {
+              setEmailError('Please enter a valid email address');
+            } else {
+              setEmailError('');
+            }
+          }}
         />
+
+        {emailError && (
+          <p className="text-red-500 text-xs mt-1 ml-1">{emailError}</p>
+        )}
 
         <PhoneDropdown
           value={formData.contactInfo.phone}
@@ -64,7 +81,7 @@ export default function ContactFormStep({ formData, setFormData }: ContactFormSt
         </div>
 
         <FloatingInput
-          label="Property Name"
+          label="Location"
           type="text"
           value={formData.contactInfo.propertyName}
           onChange={(e) => updateContactInfo('propertyName', e.target.value)}

@@ -14,7 +14,7 @@ export const appendToGoogleSheet = async (formData: FormData) => {
   try {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.GOOGLE_SHEETS_SHEET_ID;
-    const totalPrice = calculatePrice(formData);
+    const priceResult = calculatePrice(formData); 
 
     await sheets.spreadsheets.get({ spreadsheetId });
     const rowData = [
@@ -27,7 +27,7 @@ export const appendToGoogleSheet = async (formData: FormData) => {
       formData.rooms.bathroom,
       formData.rooms.dining,
       formData.package,
-      totalPrice,
+      priceResult.range, 
       formData.contactInfo.name,
       formData.contactInfo.email,
       formData.contactInfo.phone,
@@ -43,7 +43,7 @@ export const appendToGoogleSheet = async (formData: FormData) => {
     if (!response.data.values || response.data.values.length === 0) {
       const headers = [
         'Timestamp', 'BHK Type', 'BHK Size', 'Living Room', 'Kitchen', 
-        'Bedroom', 'Bathroom', 'Dining', 'Package', 'Total Price', 'Name', 'Email', 
+        'Bedroom', 'Bathroom', 'Dining', 'Package', 'Total Price Range', 'Name', 'Email', 
         'Phone', 'Property Name', 'WhatsApp Updates'
       ];
       
@@ -67,7 +67,6 @@ export const appendToGoogleSheet = async (formData: FormData) => {
         values: [rowData]
       }
     });
-    
 
     return true;
   } catch (error) {

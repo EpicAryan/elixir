@@ -3,15 +3,15 @@ import { FormData } from '../types/stepper';
 
 export async function sendTelegramNotification(
   formData: FormData
-): Promise<{success: boolean, totalPrice: number}> {
+): Promise<{success: boolean, priceRange: string}> { 
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId   = process.env.TELEGRAM_CHAT_ID;
 
-  const totalPrice = calculatePrice(formData);
+  const priceResult = calculatePrice(formData); 
 
   if (!botToken || !chatId) {
     console.error('Telegram env vars missing');
-    return { success: false, totalPrice };
+    return { success: false, priceRange: priceResult.range };
   }
 
   const text = `
@@ -30,7 +30,7 @@ export async function sendTelegramNotification(
 
 *Package:* ${formData.package}
 
-*Total Price:* ₹${totalPrice.toLocaleString('en-IN')}
+*Price Range:* ₹${priceResult.range}
 
 *Contact Information:*
 • Name: ${formData.contactInfo.name}
@@ -52,9 +52,9 @@ export async function sendTelegramNotification(
       }
     );
     if (!res.ok) console.error('Telegram API error', await res.text());
-    return { success: res.ok, totalPrice };
+    return { success: res.ok, priceRange: priceResult.range };
   } catch (e) {
     console.error('Telegram network error', e);
-    return { success: false, totalPrice };
+    return { success: false, priceRange: priceResult.range };
   }
 }

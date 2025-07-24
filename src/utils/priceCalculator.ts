@@ -19,6 +19,9 @@ type PriceTable = {
   };
 };
 
+export type PriceRange = {
+  range: string;
+};
 
 const priceTable: PriceTable = {
   '1': {
@@ -151,7 +154,21 @@ const priceTable: PriceTable = {
   }
 };
 
-export function calculatePrice(formData: FormData): number {
+function formatNumber(num: number): string {
+  return Math.round(num).toLocaleString();
+}
+
+
+function getPriceRange(basePrice: number): { lower: number; upper: number } {
+  return {
+    lower: basePrice * 0.7, // 30% less
+    upper: basePrice * 1.3  // 30% more
+  };
+}
+
+
+
+export function calculatePrice(formData: FormData): PriceRange {
   const bhk: BHKType = (['1', '2', '3', '4'].includes(formData.bhkType) 
     ? formData.bhkType 
     : '1') as BHKType;
@@ -160,15 +177,33 @@ export function calculatePrice(formData: FormData): number {
   
   const pkg: PackageType = formData.package;
 
-  let total = 0;
   const rooms = formData.rooms;
   const rates = priceTable[bhk][pkg][size];
 
-  total += rooms.livingRoom * rates.livingRoom;
-  total += rooms.kitchen * rates.kitchen;
-  total += rooms.bedroom * rates.bedroom;
-  total += rooms.bathroom * rates.bathroom;
-  total += rooms.dining * rates.dining;
+  let totalLowerBound = 0;
+  let totalUpperBound = 0;
 
-  return total;
+  const livingRoomRange = getPriceRange(rates.livingRoom);
+  totalLowerBound += rooms.livingRoom * livingRoomRange.lower;
+  totalUpperBound += rooms.livingRoom * livingRoomRange.upper;
+
+  const kitchenRange = getPriceRange(rates.kitchen);
+  totalLowerBound += rooms.kitchen * kitchenRange.lower;
+  totalUpperBound += rooms.kitchen * kitchenRange.upper;
+
+  const bedroomRange = getPriceRange(rates.bedroom);
+  totalLowerBound += rooms.bedroom * bedroomRange.lower;
+  totalUpperBound += rooms.bedroom * bedroomRange.upper;
+
+  const bathroomRange = getPriceRange(rates.bathroom);
+  totalLowerBound += rooms.bathroom * bathroomRange.lower;
+  totalUpperBound += rooms.bathroom * bathroomRange.upper;
+
+  const diningRange = getPriceRange(rates.dining);
+  totalLowerBound += rooms.dining * diningRange.lower;
+  totalUpperBound += rooms.dining * diningRange.upper;
+
+  return {
+    range: `${formatNumber(totalLowerBound)} → ${formatNumber(totalUpperBound)}`
+  };
 }

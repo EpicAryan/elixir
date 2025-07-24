@@ -130,7 +130,7 @@ const ProjectGallery = ({ project }: Props) => {
             left: 0,
             top: 0,
             transformOrigin: 'center',
-            opacity: 0, // Start invisible
+            opacity: 0, 
             transition: 'opacity 0.2s ease-in-out, transform 0.2s ease-out'
           }}
         >
