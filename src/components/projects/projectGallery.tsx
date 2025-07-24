@@ -198,7 +198,7 @@ const ProjectGallery = ({ project }: Props) => {
             <button
               key={index}
               aria-label={`Go to slide ${index + 1}`}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 cursor-pointer ${
                 index === current
                   ? 'bg-gray-700 w-4'
                   : 'bg-gray-400 hover:bg-gray-600'

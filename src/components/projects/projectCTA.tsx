@@ -1,12 +1,14 @@
 import Link from "next/link"
 import { PlusIcon } from "lucide-react"
 import { Accordion as AccordionPrimitive } from "radix-ui"
+import { useRouter } from 'next/navigation';
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
 } from "@/components/ui/accordion"
+import { Button } from "../ui/button"
 
 const items = [
   {
@@ -31,19 +33,35 @@ const items = [
 
 
 const ProjectCTA = () => {
+  const router = useRouter()
+
   return (
     <section className="container mx-auto px-6 lg:px-8 2xl:px-12 pt-16 pb-8 lg:pt-24 lg:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 px-2 2xl:px-16 ">
             <div className="w-full md:max-w-xs lg:max-w-lg flex flex-col justify-center font-gtpro space-y-4 pb-4 lg:pb-0">
                 <h3 className="text-3xl lg:text-5xl tracking-tight text-center lg:text-left">Buidling the future of cities</h3>
                 <p className="text-sm lg:text-base text-center lg:text-left text-gray-500">Through a unique combination of engineering, construction and design disciplines and expertise.</p>
-                <Link href="#">
+                <Link href="/calculator">
                     <p className="text-sm lg:text-base text-center lg:text-left cursor-pointer">Would you like to work with us?</p>
                 </Link>
             </div>
             <div className="max-w-2xl ">
                 <Component/>
             </div>
+        </div>
+        <div className="mt-16 text-center px-2 2xl:px-16 font-gtpro">
+          <h4 className="text-2xl md:text-3xl font-medium mb-4">
+            Looking to transform your home or workspace?
+          </h4>
+          <p className="text-sm md:text-base text-gray-500 mb-6 max-w-xl mx-auto">
+            Our team specializes in innovative, sustainable, and impactful design. Let&apos;s bring your vision to life.
+          </p>
+          <Button
+            onClick={() => router.push('/calculator')}
+            className="cursor-pointer px-6 text-xs sm:py-5 sm:text-base bg-[#F86642] hover:bg-orange-600 shadow-[2px_6px_20px_-3px_#F86642]/60 rounded-xl"
+          >
+            Start Your Project
+          </Button>
         </div>
     </section>
   )
